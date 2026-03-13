@@ -1,0 +1,32 @@
+[project]
+name = "parksnrec"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Kevin Wierman", email = "kwierman@gmail.com" }
+]
+requires-python = ">=3.11"
+dependencies = [
+    "geoalchemy2>=0.18.4",
+    "sqlmodel>=0.0.37",
+    "typer>=0.24.1",
+    "geopandas>=1.0.0",
+    "shapely>=2.0.0",
+    "requests>=2.31.0",
+    "pandas>=2.0.0",
+    "folium>=0.15.0",
+    "matplotlib>=3.8.0",
+    "click>=8.1.0",
+    "rich>=13.0.0",
+]
+
+[project.scripts]
+parksnrec = "parksnrec.cli:cli"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"

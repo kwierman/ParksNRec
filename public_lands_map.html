@@ -1,0 +1,3529 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_6d752d3326972a318f6f49bfa38cac40 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-minimap/3.6.1/Control.MiniMap.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-minimap/3.6.1/Control.MiniMap.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet.fullscreen@3.0.0/Control.FullScreen.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.fullscreen@3.0.0/Control.FullScreen.css"/>
+</head>
+<body>
+    
+    
+        <div style="
+            position:fixed;bottom:30px;right:10px;z-index:9999;
+            background:rgba(255,255,255,0.93);padding:12px 16px;
+            border-radius:8px;border:1px solid #ccc;
+            box-shadow:0 2px 8px rgba(0,0,0,0.2);max-width:280px">
+          <b style="font-size:13px;display:block;margin-bottom:6px">Public Land Types</b>
+          
+              <div style="display:flex;align-items:center;margin:3px 0">
+                <div style="width:14px;height:14px;background:#c8a55e;
+                            border:1px solid #786338;
+                            border-radius:2px;margin-right:7px;flex-shrink:0"></div>
+                <span style="font-size:12px">BLM Land</span>
+              </div>
+              <div style="display:flex;align-items:center;margin:3px 0">
+                <div style="width:14px;height:14px;background:#1a5c1a;
+                            border:1px solid #103710;
+                            border-radius:2px;margin-right:7px;flex-shrink:0"></div>
+                <span style="font-size:12px">National Forest</span>
+              </div>
+              <div style="display:flex;align-items:center;margin:3px 0">
+                <div style="width:14px;height:14px;background:#2d6a2d;
+                            border:1px solid #1b401b;
+                            border-radius:2px;margin-right:7px;flex-shrink:0"></div>
+                <span style="font-size:12px">National Park / Seashore / Lakeshore</span>
+              </div>
+              <div style="display:flex;align-items:center;margin:3px 0">
+                <div style="width:14px;height:14px;background:#4a90d9;
+                            border:1px solid #2c5682;
+                            border-radius:2px;margin-right:7px;flex-shrink:0"></div>
+                <span style="font-size:12px">State Park</span>
+              </div>
+              <div style="display:flex;align-items:center;margin:3px 0">
+                <div style="width:14px;height:14px;background:#7b4fa6;
+                            border:1px solid #4a2f64;
+                            border-radius:2px;margin-right:7px;flex-shrink:0"></div>
+                <span style="font-size:12px">Wilderness Area</span>
+              </div>
+              <div style="display:flex;align-items:center;margin:3px 0">
+                <div style="width:14px;height:14px;background:#c06020;
+                            border:1px solid #733a13;
+                            border-radius:2px;margin-right:7px;flex-shrink:0"></div>
+                <span style="font-size:12px">National Wildlife Refuge</span>
+              </div>
+        </div>
+    
+            <div class="folium-map" id="map_6d752d3326972a318f6f49bfa38cac40" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_6d752d3326972a318f6f49bfa38cac40 = L.map(
+                "map_6d752d3326972a318f6f49bfa38cac40",
+                {
+                    center: [48.974999999999994, -109.32499999999999],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 5,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_0704bd41e2fd2fbdb17314d0832324c4 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_0704bd41e2fd2fbdb17314d0832324c4.addTo(map_6d752d3326972a318f6f49bfa38cac40);
+        
+    
+            var tile_layer_c7454676e6823127272bf1a1eca60387 = L.tileLayer(
+                "https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}",
+                {
+  "minZoom": 0,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
+  "noWrap": false,
+  "attribution": "Esri",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_c7454676e6823127272bf1a1eca60387.addTo(map_6d752d3326972a318f6f49bfa38cac40);
+        
+    
+            var tile_layer_1aff87e44cc4aa7ae285273d91970871 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_1aff87e44cc4aa7ae285273d91970871.addTo(map_6d752d3326972a318f6f49bfa38cac40);
+        
+    
+            var tile_layer_fdccd35f20cbb73e1f78c197d4d718f7 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detect_retina": false, "max_native_zoom": 19, "max_zoom": 19, "min_zoom": 0, "no_wrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+            var mini_map_8a211a5af9160d2034511663bd5b191e = new L.Control.MiniMap(
+                tile_layer_fdccd35f20cbb73e1f78c197d4d718f7,
+                {
+  "position": "bottomright",
+  "width": 150,
+  "height": 150,
+  "collapsedWidth": 25,
+  "collapsedHeight": 25,
+  "zoomLevelOffset": -5,
+  "centerFixed": false,
+  "zoomAnimation": false,
+  "toggleDisplay": true,
+  "autoToggleDisplay": false,
+  "minimized": false,
+}
+            );
+            map_6d752d3326972a318f6f49bfa38cac40.addControl(mini_map_8a211a5af9160d2034511663bd5b191e);
+        
+    
+            L.control.fullscreen(
+                {
+  "position": "topleft",
+  "title": "Full Screen",
+  "titleCancel": "Exit Full Screen",
+  "forceSeparateButton": false,
+}
+            ).addTo(map_6d752d3326972a318f6f49bfa38cac40);
+        
+    
+            var feature_group_cf0573dea3df90cffd949bef0a27ee73 = L.featureGroup(
+                {
+}
+            );
+        
+    
+        function geo_json_6023cc371fd39b56ff30d64aa4eeb4e8_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "#786338", "fillColor": "#c8a55e", "fillOpacity": 0.45, "weight": 0.8};
+            }
+        }
+        function geo_json_6023cc371fd39b56ff30d64aa4eeb4e8_highlighter(feature) {
+            switch(feature.id) {
+                default:
+                    return {"fillOpacity": 0.7, "weight": 2.5};
+            }
+        }
+
+        function geo_json_6023cc371fd39b56ff30d64aa4eeb4e8_onEachFeature(feature, layer) {
+
+            layer.on({
+                mouseout: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                            geo_json_6023cc371fd39b56ff30d64aa4eeb4e8.resetStyle(e.target);
+                    }
+                },
+                mouseover: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        const highlightStyle = geo_json_6023cc371fd39b56ff30d64aa4eeb4e8_highlighter(e.target.feature)
+                        e.target.setStyle(highlightStyle);
+                    }
+                },
+            });
+        };
+        var geo_json_6023cc371fd39b56ff30d64aa4eeb4e8 = L.geoJson(null, {
+                onEachFeature: geo_json_6023cc371fd39b56ff30d64aa4eeb4e8_onEachFeature,
+            
+                style: geo_json_6023cc371fd39b56ff30d64aa4eeb4e8_styler,
+            ...{
+}
+        });
+
+        function geo_json_6023cc371fd39b56ff30d64aa4eeb4e8_add (data) {
+            geo_json_6023cc371fd39b56ff30d64aa4eeb4e8
+                .addData(data);
+        }
+            geo_json_6023cc371fd39b56ff30d64aa4eeb4e8_add({"features": [{"geometry": {"coordinates": [[[-117.7, 33.3], [-115.3, 33.3], [-115.3, 35.7], [-117.7, 35.7], [-117.7, 33.3]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_6023cc371fd39b56ff30d64aa4eeb4e8.bindTooltip(
+                `<div>
+                     BLM California Desert District
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_ec2e3b891eb59b89a2884ba422c64192 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_74f9c1d7f42df475a64d77ac9ccf416e = $(`<div id="html_74f9c1d7f42df475a64d77ac9ccf416e" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Arial,sans-serif;min-width:220px">           <div style="background:#c8a55e;color:white;padding:8px 10px;border-radius:4px 4px 0 0">             <b>BLM California Desert District</b>           </div>           <div style="padding:8px 10px;border:1px solid #ddd;border-top:none;border-radius:0 0 4px 4px">             <table style="width:100%;font-size:12px">               <tr><td><b>Type</b></td><td>BLM Land</td></tr>               <tr><td><b>State</b></td><td>CA</td></tr>               <tr><td><b>Agency</b></td><td>BLM</td></tr>               <tr><td><b>Acres</b></td><td>10,800,000</td></tr>             </table>             <a href='https://blm.gov' target='_blank' style='font-size:11px'>More info ↗</a>           </div>         </div>         </div>`)[0];
+                popup_ec2e3b891eb59b89a2884ba422c64192.setContent(html_74f9c1d7f42df475a64d77ac9ccf416e);
+            
+        
+
+        geo_json_6023cc371fd39b56ff30d64aa4eeb4e8.bindPopup(popup_ec2e3b891eb59b89a2884ba422c64192)
+        ;
+
+        
+    
+    
+            geo_json_6023cc371fd39b56ff30d64aa4eeb4e8.addTo(feature_group_cf0573dea3df90cffd949bef0a27ee73);
+        
+    
+        function geo_json_6e7d7a0623bfffa8340cf60133ab94aa_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "#786338", "fillColor": "#c8a55e", "fillOpacity": 0.45, "weight": 0.8};
+            }
+        }
+        function geo_json_6e7d7a0623bfffa8340cf60133ab94aa_highlighter(feature) {
+            switch(feature.id) {
+                default:
+                    return {"fillOpacity": 0.7, "weight": 2.5};
+            }
+        }
+
+        function geo_json_6e7d7a0623bfffa8340cf60133ab94aa_onEachFeature(feature, layer) {
+
+            layer.on({
+                mouseout: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                            geo_json_6e7d7a0623bfffa8340cf60133ab94aa.resetStyle(e.target);
+                    }
+                },
+                mouseover: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        const highlightStyle = geo_json_6e7d7a0623bfffa8340cf60133ab94aa_highlighter(e.target.feature)
+                        e.target.setStyle(highlightStyle);
+                    }
+                },
+            });
+        };
+        var geo_json_6e7d7a0623bfffa8340cf60133ab94aa = L.geoJson(null, {
+                onEachFeature: geo_json_6e7d7a0623bfffa8340cf60133ab94aa_onEachFeature,
+            
+                style: geo_json_6e7d7a0623bfffa8340cf60133ab94aa_styler,
+            ...{
+}
+        });
+
+        function geo_json_6e7d7a0623bfffa8340cf60133ab94aa_add (data) {
+            geo_json_6e7d7a0623bfffa8340cf60133ab94aa
+                .addData(data);
+        }
+            geo_json_6e7d7a0623bfffa8340cf60133ab94aa_add({"features": [{"geometry": {"coordinates": [[[-117.7, 38.3], [-115.3, 38.3], [-115.3, 40.7], [-117.7, 40.7], [-117.7, 38.3]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_6e7d7a0623bfffa8340cf60133ab94aa.bindTooltip(
+                `<div>
+                     BLM Nevada State Office
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_716b9c526b4c435a916f0d2496b7b334 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_57f22c477fe83d59bddf5fad7f1aee5c = $(`<div id="html_57f22c477fe83d59bddf5fad7f1aee5c" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Arial,sans-serif;min-width:220px">           <div style="background:#c8a55e;color:white;padding:8px 10px;border-radius:4px 4px 0 0">             <b>BLM Nevada State Office</b>           </div>           <div style="padding:8px 10px;border:1px solid #ddd;border-top:none;border-radius:0 0 4px 4px">             <table style="width:100%;font-size:12px">               <tr><td><b>Type</b></td><td>BLM Land</td></tr>               <tr><td><b>State</b></td><td>NV</td></tr>               <tr><td><b>Agency</b></td><td>BLM</td></tr>               <tr><td><b>Acres</b></td><td>48,000,000</td></tr>             </table>             <a href='https://blm.gov' target='_blank' style='font-size:11px'>More info ↗</a>           </div>         </div>         </div>`)[0];
+                popup_716b9c526b4c435a916f0d2496b7b334.setContent(html_57f22c477fe83d59bddf5fad7f1aee5c);
+            
+        
+
+        geo_json_6e7d7a0623bfffa8340cf60133ab94aa.bindPopup(popup_716b9c526b4c435a916f0d2496b7b334)
+        ;
+
+        
+    
+    
+            geo_json_6e7d7a0623bfffa8340cf60133ab94aa.addTo(feature_group_cf0573dea3df90cffd949bef0a27ee73);
+        
+    
+        function geo_json_fc15df1a3b25bd15fa622cfaf995eb90_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "#786338", "fillColor": "#c8a55e", "fillOpacity": 0.45, "weight": 0.8};
+            }
+        }
+        function geo_json_fc15df1a3b25bd15fa622cfaf995eb90_highlighter(feature) {
+            switch(feature.id) {
+                default:
+                    return {"fillOpacity": 0.7, "weight": 2.5};
+            }
+        }
+
+        function geo_json_fc15df1a3b25bd15fa622cfaf995eb90_onEachFeature(feature, layer) {
+
+            layer.on({
+                mouseout: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                            geo_json_fc15df1a3b25bd15fa622cfaf995eb90.resetStyle(e.target);
+                    }
+                },
+                mouseover: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        const highlightStyle = geo_json_fc15df1a3b25bd15fa622cfaf995eb90_highlighter(e.target.feature)
+                        e.target.setStyle(highlightStyle);
+                    }
+                },
+            });
+        };
+        var geo_json_fc15df1a3b25bd15fa622cfaf995eb90 = L.geoJson(null, {
+                onEachFeature: geo_json_fc15df1a3b25bd15fa622cfaf995eb90_onEachFeature,
+            
+                style: geo_json_fc15df1a3b25bd15fa622cfaf995eb90_styler,
+            ...{
+}
+        });
+
+        function geo_json_fc15df1a3b25bd15fa622cfaf995eb90_add (data) {
+            geo_json_fc15df1a3b25bd15fa622cfaf995eb90
+                .addData(data);
+        }
+            geo_json_fc15df1a3b25bd15fa622cfaf995eb90_add({"features": [{"geometry": {"coordinates": [[[-112.2, 38.3], [-109.8, 38.3], [-109.8, 40.7], [-112.2, 40.7], [-112.2, 38.3]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_fc15df1a3b25bd15fa622cfaf995eb90.bindTooltip(
+                `<div>
+                     BLM Utah State Office
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_3767368c4dbbca5b2ea1e3e58939f922 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_ebeaa5408f89cf24ca284b6d30913b5c = $(`<div id="html_ebeaa5408f89cf24ca284b6d30913b5c" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Arial,sans-serif;min-width:220px">           <div style="background:#c8a55e;color:white;padding:8px 10px;border-radius:4px 4px 0 0">             <b>BLM Utah State Office</b>           </div>           <div style="padding:8px 10px;border:1px solid #ddd;border-top:none;border-radius:0 0 4px 4px">             <table style="width:100%;font-size:12px">               <tr><td><b>Type</b></td><td>BLM Land</td></tr>               <tr><td><b>State</b></td><td>UT</td></tr>               <tr><td><b>Agency</b></td><td>BLM</td></tr>               <tr><td><b>Acres</b></td><td>22,800,000</td></tr>             </table>             <a href='https://blm.gov' target='_blank' style='font-size:11px'>More info ↗</a>           </div>         </div>         </div>`)[0];
+                popup_3767368c4dbbca5b2ea1e3e58939f922.setContent(html_ebeaa5408f89cf24ca284b6d30913b5c);
+            
+        
+
+        geo_json_fc15df1a3b25bd15fa622cfaf995eb90.bindPopup(popup_3767368c4dbbca5b2ea1e3e58939f922)
+        ;
+
+        
+    
+    
+            geo_json_fc15df1a3b25bd15fa622cfaf995eb90.addTo(feature_group_cf0573dea3df90cffd949bef0a27ee73);
+        
+    
+        function geo_json_4ca343a149481dc4c1d3d64f9a33aa20_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "#786338", "fillColor": "#c8a55e", "fillOpacity": 0.45, "weight": 0.8};
+            }
+        }
+        function geo_json_4ca343a149481dc4c1d3d64f9a33aa20_highlighter(feature) {
+            switch(feature.id) {
+                default:
+                    return {"fillOpacity": 0.7, "weight": 2.5};
+            }
+        }
+
+        function geo_json_4ca343a149481dc4c1d3d64f9a33aa20_onEachFeature(feature, layer) {
+
+            layer.on({
+                mouseout: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                            geo_json_4ca343a149481dc4c1d3d64f9a33aa20.resetStyle(e.target);
+                    }
+                },
+                mouseover: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        const highlightStyle = geo_json_4ca343a149481dc4c1d3d64f9a33aa20_highlighter(e.target.feature)
+                        e.target.setStyle(highlightStyle);
+                    }
+                },
+            });
+        };
+        var geo_json_4ca343a149481dc4c1d3d64f9a33aa20 = L.geoJson(null, {
+                onEachFeature: geo_json_4ca343a149481dc4c1d3d64f9a33aa20_onEachFeature,
+            
+                style: geo_json_4ca343a149481dc4c1d3d64f9a33aa20_styler,
+            ...{
+}
+        });
+
+        function geo_json_4ca343a149481dc4c1d3d64f9a33aa20_add (data) {
+            geo_json_4ca343a149481dc4c1d3d64f9a33aa20
+                .addData(data);
+        }
+            geo_json_4ca343a149481dc4c1d3d64f9a33aa20_add({"features": [{"geometry": {"coordinates": [[[-108.7, 37.3], [-106.3, 37.3], [-106.3, 39.7], [-108.7, 39.7], [-108.7, 37.3]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_4ca343a149481dc4c1d3d64f9a33aa20.bindTooltip(
+                `<div>
+                     BLM Colorado State Office
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_078e2fe71b999a0260a8aa758dd12de4 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_c9924711da01ef5a1d6a939fe25856c4 = $(`<div id="html_c9924711da01ef5a1d6a939fe25856c4" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Arial,sans-serif;min-width:220px">           <div style="background:#c8a55e;color:white;padding:8px 10px;border-radius:4px 4px 0 0">             <b>BLM Colorado State Office</b>           </div>           <div style="padding:8px 10px;border:1px solid #ddd;border-top:none;border-radius:0 0 4px 4px">             <table style="width:100%;font-size:12px">               <tr><td><b>Type</b></td><td>BLM Land</td></tr>               <tr><td><b>State</b></td><td>CO</td></tr>               <tr><td><b>Agency</b></td><td>BLM</td></tr>               <tr><td><b>Acres</b></td><td>8,400,000</td></tr>             </table>             <a href='https://blm.gov' target='_blank' style='font-size:11px'>More info ↗</a>           </div>         </div>         </div>`)[0];
+                popup_078e2fe71b999a0260a8aa758dd12de4.setContent(html_c9924711da01ef5a1d6a939fe25856c4);
+            
+        
+
+        geo_json_4ca343a149481dc4c1d3d64f9a33aa20.bindPopup(popup_078e2fe71b999a0260a8aa758dd12de4)
+        ;
+
+        
+    
+    
+            geo_json_4ca343a149481dc4c1d3d64f9a33aa20.addTo(feature_group_cf0573dea3df90cffd949bef0a27ee73);
+        
+    
+        function geo_json_cdc22b4ae6f3dd32eeb1042dfff315d3_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "#786338", "fillColor": "#c8a55e", "fillOpacity": 0.45, "weight": 0.8};
+            }
+        }
+        function geo_json_cdc22b4ae6f3dd32eeb1042dfff315d3_highlighter(feature) {
+            switch(feature.id) {
+                default:
+                    return {"fillOpacity": 0.7, "weight": 2.5};
+            }
+        }
+
+        function geo_json_cdc22b4ae6f3dd32eeb1042dfff315d3_onEachFeature(feature, layer) {
+
+            layer.on({
+                mouseout: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                            geo_json_cdc22b4ae6f3dd32eeb1042dfff315d3.resetStyle(e.target);
+                    }
+                },
+                mouseover: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        const highlightStyle = geo_json_cdc22b4ae6f3dd32eeb1042dfff315d3_highlighter(e.target.feature)
+                        e.target.setStyle(highlightStyle);
+                    }
+                },
+            });
+        };
+        var geo_json_cdc22b4ae6f3dd32eeb1042dfff315d3 = L.geoJson(null, {
+                onEachFeature: geo_json_cdc22b4ae6f3dd32eeb1042dfff315d3_onEachFeature,
+            
+                style: geo_json_cdc22b4ae6f3dd32eeb1042dfff315d3_styler,
+            ...{
+}
+        });
+
+        function geo_json_cdc22b4ae6f3dd32eeb1042dfff315d3_add (data) {
+            geo_json_cdc22b4ae6f3dd32eeb1042dfff315d3
+                .addData(data);
+        }
+            geo_json_cdc22b4ae6f3dd32eeb1042dfff315d3_add({"features": [{"geometry": {"coordinates": [[[-110.2, 45.8], [-107.8, 45.8], [-107.8, 48.2], [-110.2, 48.2], [-110.2, 45.8]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_cdc22b4ae6f3dd32eeb1042dfff315d3.bindTooltip(
+                `<div>
+                     BLM Montana-Dakotas State Office
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_8652cd99cfb97d49d53ad66c7b1885fc = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_be7aa90f88b79c56d5dc074394eeb03f = $(`<div id="html_be7aa90f88b79c56d5dc074394eeb03f" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Arial,sans-serif;min-width:220px">           <div style="background:#c8a55e;color:white;padding:8px 10px;border-radius:4px 4px 0 0">             <b>BLM Montana-Dakotas State Office</b>           </div>           <div style="padding:8px 10px;border:1px solid #ddd;border-top:none;border-radius:0 0 4px 4px">             <table style="width:100%;font-size:12px">               <tr><td><b>Type</b></td><td>BLM Land</td></tr>               <tr><td><b>State</b></td><td>MT</td></tr>               <tr><td><b>Agency</b></td><td>BLM</td></tr>               <tr><td><b>Acres</b></td><td>8,100,000</td></tr>             </table>             <a href='https://blm.gov' target='_blank' style='font-size:11px'>More info ↗</a>           </div>         </div>         </div>`)[0];
+                popup_8652cd99cfb97d49d53ad66c7b1885fc.setContent(html_be7aa90f88b79c56d5dc074394eeb03f);
+            
+        
+
+        geo_json_cdc22b4ae6f3dd32eeb1042dfff315d3.bindPopup(popup_8652cd99cfb97d49d53ad66c7b1885fc)
+        ;
+
+        
+    
+    
+            geo_json_cdc22b4ae6f3dd32eeb1042dfff315d3.addTo(feature_group_cf0573dea3df90cffd949bef0a27ee73);
+        
+    
+        function geo_json_74bcd299a3ec0fcb300033dd78f933a7_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "#786338", "fillColor": "#c8a55e", "fillOpacity": 0.45, "weight": 0.8};
+            }
+        }
+        function geo_json_74bcd299a3ec0fcb300033dd78f933a7_highlighter(feature) {
+            switch(feature.id) {
+                default:
+                    return {"fillOpacity": 0.7, "weight": 2.5};
+            }
+        }
+
+        function geo_json_74bcd299a3ec0fcb300033dd78f933a7_onEachFeature(feature, layer) {
+
+            layer.on({
+                mouseout: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                            geo_json_74bcd299a3ec0fcb300033dd78f933a7.resetStyle(e.target);
+                    }
+                },
+                mouseover: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        const highlightStyle = geo_json_74bcd299a3ec0fcb300033dd78f933a7_highlighter(e.target.feature)
+                        e.target.setStyle(highlightStyle);
+                    }
+                },
+            });
+        };
+        var geo_json_74bcd299a3ec0fcb300033dd78f933a7 = L.geoJson(null, {
+                onEachFeature: geo_json_74bcd299a3ec0fcb300033dd78f933a7_onEachFeature,
+            
+                style: geo_json_74bcd299a3ec0fcb300033dd78f933a7_styler,
+            ...{
+}
+        });
+
+        function geo_json_74bcd299a3ec0fcb300033dd78f933a7_add (data) {
+            geo_json_74bcd299a3ec0fcb300033dd78f933a7
+                .addData(data);
+        }
+            geo_json_74bcd299a3ec0fcb300033dd78f933a7_add({"features": [{"geometry": {"coordinates": [[[-108.7, 41.3], [-106.3, 41.3], [-106.3, 43.7], [-108.7, 43.7], [-108.7, 41.3]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_74bcd299a3ec0fcb300033dd78f933a7.bindTooltip(
+                `<div>
+                     BLM Wyoming State Office
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_62502e1570df70543ce83254027e8d17 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_3b494928ab5df3e9b7c485e76773d69b = $(`<div id="html_3b494928ab5df3e9b7c485e76773d69b" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Arial,sans-serif;min-width:220px">           <div style="background:#c8a55e;color:white;padding:8px 10px;border-radius:4px 4px 0 0">             <b>BLM Wyoming State Office</b>           </div>           <div style="padding:8px 10px;border:1px solid #ddd;border-top:none;border-radius:0 0 4px 4px">             <table style="width:100%;font-size:12px">               <tr><td><b>Type</b></td><td>BLM Land</td></tr>               <tr><td><b>State</b></td><td>WY</td></tr>               <tr><td><b>Agency</b></td><td>BLM</td></tr>               <tr><td><b>Acres</b></td><td>18,600,000</td></tr>             </table>             <a href='https://blm.gov' target='_blank' style='font-size:11px'>More info ↗</a>           </div>         </div>         </div>`)[0];
+                popup_62502e1570df70543ce83254027e8d17.setContent(html_3b494928ab5df3e9b7c485e76773d69b);
+            
+        
+
+        geo_json_74bcd299a3ec0fcb300033dd78f933a7.bindPopup(popup_62502e1570df70543ce83254027e8d17)
+        ;
+
+        
+    
+    
+            geo_json_74bcd299a3ec0fcb300033dd78f933a7.addTo(feature_group_cf0573dea3df90cffd949bef0a27ee73);
+        
+    
+        function geo_json_414c794945a816961628b923e3df2027_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "#786338", "fillColor": "#c8a55e", "fillOpacity": 0.45, "weight": 0.8};
+            }
+        }
+        function geo_json_414c794945a816961628b923e3df2027_highlighter(feature) {
+            switch(feature.id) {
+                default:
+                    return {"fillOpacity": 0.7, "weight": 2.5};
+            }
+        }
+
+        function geo_json_414c794945a816961628b923e3df2027_onEachFeature(feature, layer) {
+
+            layer.on({
+                mouseout: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                            geo_json_414c794945a816961628b923e3df2027.resetStyle(e.target);
+                    }
+                },
+                mouseover: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        const highlightStyle = geo_json_414c794945a816961628b923e3df2027_highlighter(e.target.feature)
+                        e.target.setStyle(highlightStyle);
+                    }
+                },
+            });
+        };
+        var geo_json_414c794945a816961628b923e3df2027 = L.geoJson(null, {
+                onEachFeature: geo_json_414c794945a816961628b923e3df2027_onEachFeature,
+            
+                style: geo_json_414c794945a816961628b923e3df2027_styler,
+            ...{
+}
+        });
+
+        function geo_json_414c794945a816961628b923e3df2027_add (data) {
+            geo_json_414c794945a816961628b923e3df2027
+                .addData(data);
+        }
+            geo_json_414c794945a816961628b923e3df2027_add({"features": [{"geometry": {"coordinates": [[[-107.7, 33.3], [-105.3, 33.3], [-105.3, 35.7], [-107.7, 35.7], [-107.7, 33.3]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_414c794945a816961628b923e3df2027.bindTooltip(
+                `<div>
+                     BLM New Mexico State Office
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_fe11cb25f7f982e8f90e4cfec340f052 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_e56f178c9b5c79a4df2367751162c2c9 = $(`<div id="html_e56f178c9b5c79a4df2367751162c2c9" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Arial,sans-serif;min-width:220px">           <div style="background:#c8a55e;color:white;padding:8px 10px;border-radius:4px 4px 0 0">             <b>BLM New Mexico State Office</b>           </div>           <div style="padding:8px 10px;border:1px solid #ddd;border-top:none;border-radius:0 0 4px 4px">             <table style="width:100%;font-size:12px">               <tr><td><b>Type</b></td><td>BLM Land</td></tr>               <tr><td><b>State</b></td><td>NM</td></tr>               <tr><td><b>Agency</b></td><td>BLM</td></tr>               <tr><td><b>Acres</b></td><td>13,300,000</td></tr>             </table>             <a href='https://blm.gov' target='_blank' style='font-size:11px'>More info ↗</a>           </div>         </div>         </div>`)[0];
+                popup_fe11cb25f7f982e8f90e4cfec340f052.setContent(html_e56f178c9b5c79a4df2367751162c2c9);
+            
+        
+
+        geo_json_414c794945a816961628b923e3df2027.bindPopup(popup_fe11cb25f7f982e8f90e4cfec340f052)
+        ;
+
+        
+    
+    
+            geo_json_414c794945a816961628b923e3df2027.addTo(feature_group_cf0573dea3df90cffd949bef0a27ee73);
+        
+    
+            feature_group_cf0573dea3df90cffd949bef0a27ee73.addTo(map_6d752d3326972a318f6f49bfa38cac40);
+        
+    
+            var feature_group_3147b46d28e07bfb2956e8948361f983 = L.featureGroup(
+                {
+}
+            );
+        
+    
+        function geo_json_54d564a77bf1b5a268459f73f968174d_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "#103710", "fillColor": "#1a5c1a", "fillOpacity": 0.45, "weight": 0.8};
+            }
+        }
+        function geo_json_54d564a77bf1b5a268459f73f968174d_highlighter(feature) {
+            switch(feature.id) {
+                default:
+                    return {"fillOpacity": 0.7, "weight": 2.5};
+            }
+        }
+
+        function geo_json_54d564a77bf1b5a268459f73f968174d_onEachFeature(feature, layer) {
+
+            layer.on({
+                mouseout: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                            geo_json_54d564a77bf1b5a268459f73f968174d.resetStyle(e.target);
+                    }
+                },
+                mouseover: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        const highlightStyle = geo_json_54d564a77bf1b5a268459f73f968174d_highlighter(e.target.feature)
+                        e.target.setStyle(highlightStyle);
+                    }
+                },
+            });
+        };
+        var geo_json_54d564a77bf1b5a268459f73f968174d = L.geoJson(null, {
+                onEachFeature: geo_json_54d564a77bf1b5a268459f73f968174d_onEachFeature,
+            
+                style: geo_json_54d564a77bf1b5a268459f73f968174d_styler,
+            ...{
+}
+        });
+
+        function geo_json_54d564a77bf1b5a268459f73f968174d_add (data) {
+            geo_json_54d564a77bf1b5a268459f73f968174d
+                .addData(data);
+        }
+            geo_json_54d564a77bf1b5a268459f73f968174d_add({"features": [{"geometry": {"coordinates": [[[-119.8, 37.7], [-118.2, 37.7], [-118.2, 39.3], [-119.8, 39.3], [-119.8, 37.7]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_54d564a77bf1b5a268459f73f968174d.bindTooltip(
+                `<div>
+                     Sierra Nevada National Forest
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_53aa58214f105d49c695e95e466d3ac9 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_9d35068bd2eb400bd1003d25643269db = $(`<div id="html_9d35068bd2eb400bd1003d25643269db" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Arial,sans-serif;min-width:220px">           <div style="background:#1a5c1a;color:white;padding:8px 10px;border-radius:4px 4px 0 0">             <b>Sierra Nevada National Forest</b>           </div>           <div style="padding:8px 10px;border:1px solid #ddd;border-top:none;border-radius:0 0 4px 4px">             <table style="width:100%;font-size:12px">               <tr><td><b>Type</b></td><td>National Forest</td></tr>               <tr><td><b>State</b></td><td>CA</td></tr>               <tr><td><b>Agency</b></td><td>USFS</td></tr>               <tr><td><b>Acres</b></td><td>1,300,000</td></tr>             </table>             <a href='https://fs.usda.gov' target='_blank' style='font-size:11px'>More info ↗</a>           </div>         </div>         </div>`)[0];
+                popup_53aa58214f105d49c695e95e466d3ac9.setContent(html_9d35068bd2eb400bd1003d25643269db);
+            
+        
+
+        geo_json_54d564a77bf1b5a268459f73f968174d.bindPopup(popup_53aa58214f105d49c695e95e466d3ac9)
+        ;
+
+        
+    
+    
+            geo_json_54d564a77bf1b5a268459f73f968174d.addTo(feature_group_3147b46d28e07bfb2956e8948361f983);
+        
+    
+        function geo_json_b8a63884d3efe7266abb4de1a6a7e324_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "#103710", "fillColor": "#1a5c1a", "fillOpacity": 0.45, "weight": 0.8};
+            }
+        }
+        function geo_json_b8a63884d3efe7266abb4de1a6a7e324_highlighter(feature) {
+            switch(feature.id) {
+                default:
+                    return {"fillOpacity": 0.7, "weight": 2.5};
+            }
+        }
+
+        function geo_json_b8a63884d3efe7266abb4de1a6a7e324_onEachFeature(feature, layer) {
+
+            layer.on({
+                mouseout: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                            geo_json_b8a63884d3efe7266abb4de1a6a7e324.resetStyle(e.target);
+                    }
+                },
+                mouseover: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        const highlightStyle = geo_json_b8a63884d3efe7266abb4de1a6a7e324_highlighter(e.target.feature)
+                        e.target.setStyle(highlightStyle);
+                    }
+                },
+            });
+        };
+        var geo_json_b8a63884d3efe7266abb4de1a6a7e324 = L.geoJson(null, {
+                onEachFeature: geo_json_b8a63884d3efe7266abb4de1a6a7e324_onEachFeature,
+            
+                style: geo_json_b8a63884d3efe7266abb4de1a6a7e324_styler,
+            ...{
+}
+        });
+
+        function geo_json_b8a63884d3efe7266abb4de1a6a7e324_add (data) {
+            geo_json_b8a63884d3efe7266abb4de1a6a7e324
+                .addData(data);
+        }
+            geo_json_b8a63884d3efe7266abb4de1a6a7e324_add({"features": [{"geometry": {"coordinates": [[[-134.8, 56.7], [-133.2, 56.7], [-133.2, 58.3], [-134.8, 58.3], [-134.8, 56.7]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_b8a63884d3efe7266abb4de1a6a7e324.bindTooltip(
+                `<div>
+                     Tongass National Forest
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_c4d9bab20d251a21af70b18235446ca9 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_6d9ef75b8eefb09f6947712101e0a5f5 = $(`<div id="html_6d9ef75b8eefb09f6947712101e0a5f5" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Arial,sans-serif;min-width:220px">           <div style="background:#1a5c1a;color:white;padding:8px 10px;border-radius:4px 4px 0 0">             <b>Tongass National Forest</b>           </div>           <div style="padding:8px 10px;border:1px solid #ddd;border-top:none;border-radius:0 0 4px 4px">             <table style="width:100%;font-size:12px">               <tr><td><b>Type</b></td><td>National Forest</td></tr>               <tr><td><b>State</b></td><td>AK</td></tr>               <tr><td><b>Agency</b></td><td>USFS</td></tr>               <tr><td><b>Acres</b></td><td>16,800,000</td></tr>             </table>             <a href='https://fs.usda.gov' target='_blank' style='font-size:11px'>More info ↗</a>           </div>         </div>         </div>`)[0];
+                popup_c4d9bab20d251a21af70b18235446ca9.setContent(html_6d9ef75b8eefb09f6947712101e0a5f5);
+            
+        
+
+        geo_json_b8a63884d3efe7266abb4de1a6a7e324.bindPopup(popup_c4d9bab20d251a21af70b18235446ca9)
+        ;
+
+        
+    
+    
+            geo_json_b8a63884d3efe7266abb4de1a6a7e324.addTo(feature_group_3147b46d28e07bfb2956e8948361f983);
+        
+    
+        function geo_json_112ec08ce23ff2fec8af33cdd899119f_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "#103710", "fillColor": "#1a5c1a", "fillOpacity": 0.45, "weight": 0.8};
+            }
+        }
+        function geo_json_112ec08ce23ff2fec8af33cdd899119f_highlighter(feature) {
+            switch(feature.id) {
+                default:
+                    return {"fillOpacity": 0.7, "weight": 2.5};
+            }
+        }
+
+        function geo_json_112ec08ce23ff2fec8af33cdd899119f_onEachFeature(feature, layer) {
+
+            layer.on({
+                mouseout: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                            geo_json_112ec08ce23ff2fec8af33cdd899119f.resetStyle(e.target);
+                    }
+                },
+                mouseover: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        const highlightStyle = geo_json_112ec08ce23ff2fec8af33cdd899119f_highlighter(e.target.feature)
+                        e.target.setStyle(highlightStyle);
+                    }
+                },
+            });
+        };
+        var geo_json_112ec08ce23ff2fec8af33cdd899119f = L.geoJson(null, {
+                onEachFeature: geo_json_112ec08ce23ff2fec8af33cdd899119f_onEachFeature,
+            
+                style: geo_json_112ec08ce23ff2fec8af33cdd899119f_styler,
+            ...{
+}
+        });
+
+        function geo_json_112ec08ce23ff2fec8af33cdd899119f_add (data) {
+            geo_json_112ec08ce23ff2fec8af33cdd899119f
+                .addData(data);
+        }
+            geo_json_112ec08ce23ff2fec8af33cdd899119f_add({"features": [{"geometry": {"coordinates": [[[-114.8, 45.2], [-113.2, 45.2], [-113.2, 46.8], [-114.8, 46.8], [-114.8, 45.2]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_112ec08ce23ff2fec8af33cdd899119f.bindTooltip(
+                `<div>
+                     Bitterroot National Forest
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_da20dd5a0343d654c53a669c9fb97b11 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_35203b6fe6eceb69aa4b20ed2d2c796f = $(`<div id="html_35203b6fe6eceb69aa4b20ed2d2c796f" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Arial,sans-serif;min-width:220px">           <div style="background:#1a5c1a;color:white;padding:8px 10px;border-radius:4px 4px 0 0">             <b>Bitterroot National Forest</b>           </div>           <div style="padding:8px 10px;border:1px solid #ddd;border-top:none;border-radius:0 0 4px 4px">             <table style="width:100%;font-size:12px">               <tr><td><b>Type</b></td><td>National Forest</td></tr>               <tr><td><b>State</b></td><td>MT</td></tr>               <tr><td><b>Agency</b></td><td>USFS</td></tr>               <tr><td><b>Acres</b></td><td>1,600,000</td></tr>             </table>             <a href='https://fs.usda.gov' target='_blank' style='font-size:11px'>More info ↗</a>           </div>         </div>         </div>`)[0];
+                popup_da20dd5a0343d654c53a669c9fb97b11.setContent(html_35203b6fe6eceb69aa4b20ed2d2c796f);
+            
+        
+
+        geo_json_112ec08ce23ff2fec8af33cdd899119f.bindPopup(popup_da20dd5a0343d654c53a669c9fb97b11)
+        ;
+
+        
+    
+    
+            geo_json_112ec08ce23ff2fec8af33cdd899119f.addTo(feature_group_3147b46d28e07bfb2956e8948361f983);
+        
+    
+        function geo_json_ff08419880a753af25b781a9aef1db75_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "#103710", "fillColor": "#1a5c1a", "fillOpacity": 0.45, "weight": 0.8};
+            }
+        }
+        function geo_json_ff08419880a753af25b781a9aef1db75_highlighter(feature) {
+            switch(feature.id) {
+                default:
+                    return {"fillOpacity": 0.7, "weight": 2.5};
+            }
+        }
+
+        function geo_json_ff08419880a753af25b781a9aef1db75_onEachFeature(feature, layer) {
+
+            layer.on({
+                mouseout: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                            geo_json_ff08419880a753af25b781a9aef1db75.resetStyle(e.target);
+                    }
+                },
+                mouseover: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        const highlightStyle = geo_json_ff08419880a753af25b781a9aef1db75_highlighter(e.target.feature)
+                        e.target.setStyle(highlightStyle);
+                    }
+                },
+            });
+        };
+        var geo_json_ff08419880a753af25b781a9aef1db75 = L.geoJson(null, {
+                onEachFeature: geo_json_ff08419880a753af25b781a9aef1db75_onEachFeature,
+            
+                style: geo_json_ff08419880a753af25b781a9aef1db75_styler,
+            ...{
+}
+        });
+
+        function geo_json_ff08419880a753af25b781a9aef1db75_add (data) {
+            geo_json_ff08419880a753af25b781a9aef1db75
+                .addData(data);
+        }
+            geo_json_ff08419880a753af25b781a9aef1db75_add({"features": [{"geometry": {"coordinates": [[[-112.5, 34.1], [-110.9, 34.1], [-110.9, 35.699999999999996], [-112.5, 35.699999999999996], [-112.5, 34.1]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_ff08419880a753af25b781a9aef1db75.bindTooltip(
+                `<div>
+                     Coconino National Forest
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_df633fa87a8f0912b0fd41a300b35579 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_7130f0952a8b93d73897ee14a9c3cf06 = $(`<div id="html_7130f0952a8b93d73897ee14a9c3cf06" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Arial,sans-serif;min-width:220px">           <div style="background:#1a5c1a;color:white;padding:8px 10px;border-radius:4px 4px 0 0">             <b>Coconino National Forest</b>           </div>           <div style="padding:8px 10px;border:1px solid #ddd;border-top:none;border-radius:0 0 4px 4px">             <table style="width:100%;font-size:12px">               <tr><td><b>Type</b></td><td>National Forest</td></tr>               <tr><td><b>State</b></td><td>AZ</td></tr>               <tr><td><b>Agency</b></td><td>USFS</td></tr>               <tr><td><b>Acres</b></td><td>1,856,698</td></tr>             </table>             <a href='https://fs.usda.gov' target='_blank' style='font-size:11px'>More info ↗</a>           </div>         </div>         </div>`)[0];
+                popup_df633fa87a8f0912b0fd41a300b35579.setContent(html_7130f0952a8b93d73897ee14a9c3cf06);
+            
+        
+
+        geo_json_ff08419880a753af25b781a9aef1db75.bindPopup(popup_df633fa87a8f0912b0fd41a300b35579)
+        ;
+
+        
+    
+    
+            geo_json_ff08419880a753af25b781a9aef1db75.addTo(feature_group_3147b46d28e07bfb2956e8948361f983);
+        
+    
+        function geo_json_bbba38374ce25a88f5e6ed6729da3832_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "#103710", "fillColor": "#1a5c1a", "fillOpacity": 0.45, "weight": 0.8};
+            }
+        }
+        function geo_json_bbba38374ce25a88f5e6ed6729da3832_highlighter(feature) {
+            switch(feature.id) {
+                default:
+                    return {"fillOpacity": 0.7, "weight": 2.5};
+            }
+        }
+
+        function geo_json_bbba38374ce25a88f5e6ed6729da3832_onEachFeature(feature, layer) {
+
+            layer.on({
+                mouseout: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                            geo_json_bbba38374ce25a88f5e6ed6729da3832.resetStyle(e.target);
+                    }
+                },
+                mouseover: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        const highlightStyle = geo_json_bbba38374ce25a88f5e6ed6729da3832_highlighter(e.target.feature)
+                        e.target.setStyle(highlightStyle);
+                    }
+                },
+            });
+        };
+        var geo_json_bbba38374ce25a88f5e6ed6729da3832 = L.geoJson(null, {
+                onEachFeature: geo_json_bbba38374ce25a88f5e6ed6729da3832_onEachFeature,
+            
+                style: geo_json_bbba38374ce25a88f5e6ed6729da3832_styler,
+            ...{
+}
+        });
+
+        function geo_json_bbba38374ce25a88f5e6ed6729da3832_add (data) {
+            geo_json_bbba38374ce25a88f5e6ed6729da3832
+                .addData(data);
+        }
+            geo_json_bbba38374ce25a88f5e6ed6729da3832_add({"features": [{"geometry": {"coordinates": [[[-122.8, 43.400000000000006], [-121.2, 43.400000000000006], [-121.2, 45.0], [-122.8, 45.0], [-122.8, 43.400000000000006]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_bbba38374ce25a88f5e6ed6729da3832.bindTooltip(
+                `<div>
+                     Willamette National Forest
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_98fc07af7db7536058e6c19affb4ad29 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_d9418433ede04534691896548e9611f2 = $(`<div id="html_d9418433ede04534691896548e9611f2" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Arial,sans-serif;min-width:220px">           <div style="background:#1a5c1a;color:white;padding:8px 10px;border-radius:4px 4px 0 0">             <b>Willamette National Forest</b>           </div>           <div style="padding:8px 10px;border:1px solid #ddd;border-top:none;border-radius:0 0 4px 4px">             <table style="width:100%;font-size:12px">               <tr><td><b>Type</b></td><td>National Forest</td></tr>               <tr><td><b>State</b></td><td>OR</td></tr>               <tr><td><b>Agency</b></td><td>USFS</td></tr>               <tr><td><b>Acres</b></td><td>1,678,031</td></tr>             </table>             <a href='https://fs.usda.gov' target='_blank' style='font-size:11px'>More info ↗</a>           </div>         </div>         </div>`)[0];
+                popup_98fc07af7db7536058e6c19affb4ad29.setContent(html_d9418433ede04534691896548e9611f2);
+            
+        
+
+        geo_json_bbba38374ce25a88f5e6ed6729da3832.bindPopup(popup_98fc07af7db7536058e6c19affb4ad29)
+        ;
+
+        
+    
+    
+            geo_json_bbba38374ce25a88f5e6ed6729da3832.addTo(feature_group_3147b46d28e07bfb2956e8948361f983);
+        
+    
+        function geo_json_3bf9b19a66f14cf111cf7be0a736af13_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "#103710", "fillColor": "#1a5c1a", "fillOpacity": 0.45, "weight": 0.8};
+            }
+        }
+        function geo_json_3bf9b19a66f14cf111cf7be0a736af13_highlighter(feature) {
+            switch(feature.id) {
+                default:
+                    return {"fillOpacity": 0.7, "weight": 2.5};
+            }
+        }
+
+        function geo_json_3bf9b19a66f14cf111cf7be0a736af13_onEachFeature(feature, layer) {
+
+            layer.on({
+                mouseout: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                            geo_json_3bf9b19a66f14cf111cf7be0a736af13.resetStyle(e.target);
+                    }
+                },
+                mouseover: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        const highlightStyle = geo_json_3bf9b19a66f14cf111cf7be0a736af13_highlighter(e.target.feature)
+                        e.target.setStyle(highlightStyle);
+                    }
+                },
+            });
+        };
+        var geo_json_3bf9b19a66f14cf111cf7be0a736af13 = L.geoJson(null, {
+                onEachFeature: geo_json_3bf9b19a66f14cf111cf7be0a736af13_onEachFeature,
+            
+                style: geo_json_3bf9b19a66f14cf111cf7be0a736af13_styler,
+            ...{
+}
+        });
+
+        function geo_json_3bf9b19a66f14cf111cf7be0a736af13_add (data) {
+            geo_json_3bf9b19a66f14cf111cf7be0a736af13
+                .addData(data);
+        }
+            geo_json_3bf9b19a66f14cf111cf7be0a736af13_add({"features": [{"geometry": {"coordinates": [[[-72.1, 43.400000000000006], [-70.5, 43.400000000000006], [-70.5, 45.0], [-72.1, 45.0], [-72.1, 43.400000000000006]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_3bf9b19a66f14cf111cf7be0a736af13.bindTooltip(
+                `<div>
+                     White Mountain National Forest
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_274a06d1cd26adaa41e794b830b15c05 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_a359be3fdb4fc8dd820c29e9efd3acbf = $(`<div id="html_a359be3fdb4fc8dd820c29e9efd3acbf" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Arial,sans-serif;min-width:220px">           <div style="background:#1a5c1a;color:white;padding:8px 10px;border-radius:4px 4px 0 0">             <b>White Mountain National Forest</b>           </div>           <div style="padding:8px 10px;border:1px solid #ddd;border-top:none;border-radius:0 0 4px 4px">             <table style="width:100%;font-size:12px">               <tr><td><b>Type</b></td><td>National Forest</td></tr>               <tr><td><b>State</b></td><td>NH</td></tr>               <tr><td><b>Agency</b></td><td>USFS</td></tr>               <tr><td><b>Acres</b></td><td>750,852</td></tr>             </table>             <a href='https://fs.usda.gov' target='_blank' style='font-size:11px'>More info ↗</a>           </div>         </div>         </div>`)[0];
+                popup_274a06d1cd26adaa41e794b830b15c05.setContent(html_a359be3fdb4fc8dd820c29e9efd3acbf);
+            
+        
+
+        geo_json_3bf9b19a66f14cf111cf7be0a736af13.bindPopup(popup_274a06d1cd26adaa41e794b830b15c05)
+        ;
+
+        
+    
+    
+            geo_json_3bf9b19a66f14cf111cf7be0a736af13.addTo(feature_group_3147b46d28e07bfb2956e8948361f983);
+        
+    
+        function geo_json_9aefd54ea4c943fadabfd3aa896bc9d6_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "#103710", "fillColor": "#1a5c1a", "fillOpacity": 0.45, "weight": 0.8};
+            }
+        }
+        function geo_json_9aefd54ea4c943fadabfd3aa896bc9d6_highlighter(feature) {
+            switch(feature.id) {
+                default:
+                    return {"fillOpacity": 0.7, "weight": 2.5};
+            }
+        }
+
+        function geo_json_9aefd54ea4c943fadabfd3aa896bc9d6_onEachFeature(feature, layer) {
+
+            layer.on({
+                mouseout: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                            geo_json_9aefd54ea4c943fadabfd3aa896bc9d6.resetStyle(e.target);
+                    }
+                },
+                mouseover: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        const highlightStyle = geo_json_9aefd54ea4c943fadabfd3aa896bc9d6_highlighter(e.target.feature)
+                        e.target.setStyle(highlightStyle);
+                    }
+                },
+            });
+        };
+        var geo_json_9aefd54ea4c943fadabfd3aa896bc9d6 = L.geoJson(null, {
+                onEachFeature: geo_json_9aefd54ea4c943fadabfd3aa896bc9d6_onEachFeature,
+            
+                style: geo_json_9aefd54ea4c943fadabfd3aa896bc9d6_styler,
+            ...{
+}
+        });
+
+        function geo_json_9aefd54ea4c943fadabfd3aa896bc9d6_add (data) {
+            geo_json_9aefd54ea4c943fadabfd3aa896bc9d6
+                .addData(data);
+        }
+            geo_json_9aefd54ea4c943fadabfd3aa896bc9d6_add({"features": [{"geometry": {"coordinates": [[[-92.3, 47.0], [-90.7, 47.0], [-90.7, 48.599999999999994], [-92.3, 48.599999999999994], [-92.3, 47.0]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_9aefd54ea4c943fadabfd3aa896bc9d6.bindTooltip(
+                `<div>
+                     Superior National Forest
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_da0f3e84d581a13f1c47bd1abf3d0d91 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_c3957ccb22bb80117c361e31bcef40bb = $(`<div id="html_c3957ccb22bb80117c361e31bcef40bb" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Arial,sans-serif;min-width:220px">           <div style="background:#1a5c1a;color:white;padding:8px 10px;border-radius:4px 4px 0 0">             <b>Superior National Forest</b>           </div>           <div style="padding:8px 10px;border:1px solid #ddd;border-top:none;border-radius:0 0 4px 4px">             <table style="width:100%;font-size:12px">               <tr><td><b>Type</b></td><td>National Forest</td></tr>               <tr><td><b>State</b></td><td>MN</td></tr>               <tr><td><b>Agency</b></td><td>USFS</td></tr>               <tr><td><b>Acres</b></td><td>3,900,000</td></tr>             </table>             <a href='https://fs.usda.gov' target='_blank' style='font-size:11px'>More info ↗</a>           </div>         </div>         </div>`)[0];
+                popup_da0f3e84d581a13f1c47bd1abf3d0d91.setContent(html_c3957ccb22bb80117c361e31bcef40bb);
+            
+        
+
+        geo_json_9aefd54ea4c943fadabfd3aa896bc9d6.bindPopup(popup_da0f3e84d581a13f1c47bd1abf3d0d91)
+        ;
+
+        
+    
+    
+            geo_json_9aefd54ea4c943fadabfd3aa896bc9d6.addTo(feature_group_3147b46d28e07bfb2956e8948361f983);
+        
+    
+        function geo_json_c6e730d4d77eb4748d8ce1477228cf10_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "#103710", "fillColor": "#1a5c1a", "fillOpacity": 0.45, "weight": 0.8};
+            }
+        }
+        function geo_json_c6e730d4d77eb4748d8ce1477228cf10_highlighter(feature) {
+            switch(feature.id) {
+                default:
+                    return {"fillOpacity": 0.7, "weight": 2.5};
+            }
+        }
+
+        function geo_json_c6e730d4d77eb4748d8ce1477228cf10_onEachFeature(feature, layer) {
+
+            layer.on({
+                mouseout: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                            geo_json_c6e730d4d77eb4748d8ce1477228cf10.resetStyle(e.target);
+                    }
+                },
+                mouseover: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        const highlightStyle = geo_json_c6e730d4d77eb4748d8ce1477228cf10_highlighter(e.target.feature)
+                        e.target.setStyle(highlightStyle);
+                    }
+                },
+            });
+        };
+        var geo_json_c6e730d4d77eb4748d8ce1477228cf10 = L.geoJson(null, {
+                onEachFeature: geo_json_c6e730d4d77eb4748d8ce1477228cf10_onEachFeature,
+            
+                style: geo_json_c6e730d4d77eb4748d8ce1477228cf10_styler,
+            ...{
+}
+        });
+
+        function geo_json_c6e730d4d77eb4748d8ce1477228cf10_add (data) {
+            geo_json_c6e730d4d77eb4748d8ce1477228cf10
+                .addData(data);
+        }
+            geo_json_c6e730d4d77eb4748d8ce1477228cf10_add({"features": [{"geometry": {"coordinates": [[[-123.3, 40.2], [-121.7, 40.2], [-121.7, 41.8], [-123.3, 41.8], [-123.3, 40.2]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_c6e730d4d77eb4748d8ce1477228cf10.bindTooltip(
+                `<div>
+                     Shasta-Trinity National Forest
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_c9822fd905398eaabb5a1d17734eef4f = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_ae689201a029d79c11c2f0cc5fed4cb5 = $(`<div id="html_ae689201a029d79c11c2f0cc5fed4cb5" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Arial,sans-serif;min-width:220px">           <div style="background:#1a5c1a;color:white;padding:8px 10px;border-radius:4px 4px 0 0">             <b>Shasta-Trinity National Forest</b>           </div>           <div style="padding:8px 10px;border:1px solid #ddd;border-top:none;border-radius:0 0 4px 4px">             <table style="width:100%;font-size:12px">               <tr><td><b>Type</b></td><td>National Forest</td></tr>               <tr><td><b>State</b></td><td>CA</td></tr>               <tr><td><b>Agency</b></td><td>USFS</td></tr>               <tr><td><b>Acres</b></td><td>2,200,000</td></tr>             </table>             <a href='https://fs.usda.gov' target='_blank' style='font-size:11px'>More info ↗</a>           </div>         </div>         </div>`)[0];
+                popup_c9822fd905398eaabb5a1d17734eef4f.setContent(html_ae689201a029d79c11c2f0cc5fed4cb5);
+            
+        
+
+        geo_json_c6e730d4d77eb4748d8ce1477228cf10.bindPopup(popup_c9822fd905398eaabb5a1d17734eef4f)
+        ;
+
+        
+    
+    
+            geo_json_c6e730d4d77eb4748d8ce1477228cf10.addTo(feature_group_3147b46d28e07bfb2956e8948361f983);
+        
+    
+            feature_group_3147b46d28e07bfb2956e8948361f983.addTo(map_6d752d3326972a318f6f49bfa38cac40);
+        
+    
+            var feature_group_ab473225b5ed5dd91bc1a17a425d0ed2 = L.featureGroup(
+                {
+}
+            );
+        
+    
+        function geo_json_a3bb15f00bcf7a41d9f53bd0ba188f51_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "#1b401b", "fillColor": "#2d6a2d", "fillOpacity": 0.45, "weight": 0.8};
+            }
+        }
+        function geo_json_a3bb15f00bcf7a41d9f53bd0ba188f51_highlighter(feature) {
+            switch(feature.id) {
+                default:
+                    return {"fillOpacity": 0.7, "weight": 2.5};
+            }
+        }
+
+        function geo_json_a3bb15f00bcf7a41d9f53bd0ba188f51_onEachFeature(feature, layer) {
+
+            layer.on({
+                mouseout: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                            geo_json_a3bb15f00bcf7a41d9f53bd0ba188f51.resetStyle(e.target);
+                    }
+                },
+                mouseover: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        const highlightStyle = geo_json_a3bb15f00bcf7a41d9f53bd0ba188f51_highlighter(e.target.feature)
+                        e.target.setStyle(highlightStyle);
+                    }
+                },
+            });
+        };
+        var geo_json_a3bb15f00bcf7a41d9f53bd0ba188f51 = L.geoJson(null, {
+                onEachFeature: geo_json_a3bb15f00bcf7a41d9f53bd0ba188f51_onEachFeature,
+            
+                style: geo_json_a3bb15f00bcf7a41d9f53bd0ba188f51_styler,
+            ...{
+}
+        });
+
+        function geo_json_a3bb15f00bcf7a41d9f53bd0ba188f51_add (data) {
+            geo_json_a3bb15f00bcf7a41d9f53bd0ba188f51
+                .addData(data);
+        }
+            geo_json_a3bb15f00bcf7a41d9f53bd0ba188f51_add({"features": [{"geometry": {"coordinates": [[[-120.0, 37.3], [-119.0, 37.3], [-119.0, 38.3], [-120.0, 38.3], [-120.0, 37.3]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_a3bb15f00bcf7a41d9f53bd0ba188f51.bindTooltip(
+                `<div>
+                     Yosemite National Park
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_7fa57fd3c345b83a3c7d60f5b717534b = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_7a1c8f291decfe64a8a40ccb112a7f5a = $(`<div id="html_7a1c8f291decfe64a8a40ccb112a7f5a" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Arial,sans-serif;min-width:220px">           <div style="background:#2d6a2d;color:white;padding:8px 10px;border-radius:4px 4px 0 0">             <b>Yosemite National Park</b>           </div>           <div style="padding:8px 10px;border:1px solid #ddd;border-top:none;border-radius:0 0 4px 4px">             <table style="width:100%;font-size:12px">               <tr><td><b>Type</b></td><td>National Park / Seashore / Lakeshore</td></tr>               <tr><td><b>State</b></td><td>CA</td></tr>               <tr><td><b>Agency</b></td><td>NPS</td></tr>               <tr><td><b>Acres</b></td><td>748,436</td></tr>             </table>             <a href='https://nps.gov' target='_blank' style='font-size:11px'>More info ↗</a>           </div>         </div>         </div>`)[0];
+                popup_7fa57fd3c345b83a3c7d60f5b717534b.setContent(html_7a1c8f291decfe64a8a40ccb112a7f5a);
+            
+        
+
+        geo_json_a3bb15f00bcf7a41d9f53bd0ba188f51.bindPopup(popup_7fa57fd3c345b83a3c7d60f5b717534b)
+        ;
+
+        
+    
+    
+            geo_json_a3bb15f00bcf7a41d9f53bd0ba188f51.addTo(feature_group_ab473225b5ed5dd91bc1a17a425d0ed2);
+        
+    
+        function geo_json_1866f3e4bb844683f30070b50351c867_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "#1b401b", "fillColor": "#2d6a2d", "fillOpacity": 0.45, "weight": 0.8};
+            }
+        }
+        function geo_json_1866f3e4bb844683f30070b50351c867_highlighter(feature) {
+            switch(feature.id) {
+                default:
+                    return {"fillOpacity": 0.7, "weight": 2.5};
+            }
+        }
+
+        function geo_json_1866f3e4bb844683f30070b50351c867_onEachFeature(feature, layer) {
+
+            layer.on({
+                mouseout: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                            geo_json_1866f3e4bb844683f30070b50351c867.resetStyle(e.target);
+                    }
+                },
+                mouseover: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        const highlightStyle = geo_json_1866f3e4bb844683f30070b50351c867_highlighter(e.target.feature)
+                        e.target.setStyle(highlightStyle);
+                    }
+                },
+            });
+        };
+        var geo_json_1866f3e4bb844683f30070b50351c867 = L.geoJson(null, {
+                onEachFeature: geo_json_1866f3e4bb844683f30070b50351c867_onEachFeature,
+            
+                style: geo_json_1866f3e4bb844683f30070b50351c867_styler,
+            ...{
+}
+        });
+
+        function geo_json_1866f3e4bb844683f30070b50351c867_add (data) {
+            geo_json_1866f3e4bb844683f30070b50351c867
+                .addData(data);
+        }
+            geo_json_1866f3e4bb844683f30070b50351c867_add({"features": [{"geometry": {"coordinates": [[[-112.6, 35.6], [-111.6, 35.6], [-111.6, 36.6], [-112.6, 36.6], [-112.6, 35.6]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_1866f3e4bb844683f30070b50351c867.bindTooltip(
+                `<div>
+                     Grand Canyon National Park
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_aabce7bec49c2bac47d084eb9d0dfbb4 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_2cc79789912146edcf4a5da342e87c0a = $(`<div id="html_2cc79789912146edcf4a5da342e87c0a" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Arial,sans-serif;min-width:220px">           <div style="background:#2d6a2d;color:white;padding:8px 10px;border-radius:4px 4px 0 0">             <b>Grand Canyon National Park</b>           </div>           <div style="padding:8px 10px;border:1px solid #ddd;border-top:none;border-radius:0 0 4px 4px">             <table style="width:100%;font-size:12px">               <tr><td><b>Type</b></td><td>National Park / Seashore / Lakeshore</td></tr>               <tr><td><b>State</b></td><td>AZ</td></tr>               <tr><td><b>Agency</b></td><td>NPS</td></tr>               <tr><td><b>Acres</b></td><td>1,218,376</td></tr>             </table>             <a href='https://nps.gov' target='_blank' style='font-size:11px'>More info ↗</a>           </div>         </div>         </div>`)[0];
+                popup_aabce7bec49c2bac47d084eb9d0dfbb4.setContent(html_2cc79789912146edcf4a5da342e87c0a);
+            
+        
+
+        geo_json_1866f3e4bb844683f30070b50351c867.bindPopup(popup_aabce7bec49c2bac47d084eb9d0dfbb4)
+        ;
+
+        
+    
+    
+            geo_json_1866f3e4bb844683f30070b50351c867.addTo(feature_group_ab473225b5ed5dd91bc1a17a425d0ed2);
+        
+    
+        function geo_json_2e6c486d39c1dadfaf9e6a3518e7d5f8_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "#1b401b", "fillColor": "#2d6a2d", "fillOpacity": 0.45, "weight": 0.8};
+            }
+        }
+        function geo_json_2e6c486d39c1dadfaf9e6a3518e7d5f8_highlighter(feature) {
+            switch(feature.id) {
+                default:
+                    return {"fillOpacity": 0.7, "weight": 2.5};
+            }
+        }
+
+        function geo_json_2e6c486d39c1dadfaf9e6a3518e7d5f8_onEachFeature(feature, layer) {
+
+            layer.on({
+                mouseout: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                            geo_json_2e6c486d39c1dadfaf9e6a3518e7d5f8.resetStyle(e.target);
+                    }
+                },
+                mouseover: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        const highlightStyle = geo_json_2e6c486d39c1dadfaf9e6a3518e7d5f8_highlighter(e.target.feature)
+                        e.target.setStyle(highlightStyle);
+                    }
+                },
+            });
+        };
+        var geo_json_2e6c486d39c1dadfaf9e6a3518e7d5f8 = L.geoJson(null, {
+                onEachFeature: geo_json_2e6c486d39c1dadfaf9e6a3518e7d5f8_onEachFeature,
+            
+                style: geo_json_2e6c486d39c1dadfaf9e6a3518e7d5f8_styler,
+            ...{
+}
+        });
+
+        function geo_json_2e6c486d39c1dadfaf9e6a3518e7d5f8_add (data) {
+            geo_json_2e6c486d39c1dadfaf9e6a3518e7d5f8
+                .addData(data);
+        }
+            geo_json_2e6c486d39c1dadfaf9e6a3518e7d5f8_add({"features": [{"geometry": {"coordinates": [[[-111.0, 43.9], [-110.0, 43.9], [-110.0, 44.9], [-111.0, 44.9], [-111.0, 43.9]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_2e6c486d39c1dadfaf9e6a3518e7d5f8.bindTooltip(
+                `<div>
+                     Yellowstone National Park
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_c30fba3efefd4654a894c75e6d23c048 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_1b8ed4567050045330f99987b4757742 = $(`<div id="html_1b8ed4567050045330f99987b4757742" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Arial,sans-serif;min-width:220px">           <div style="background:#2d6a2d;color:white;padding:8px 10px;border-radius:4px 4px 0 0">             <b>Yellowstone National Park</b>           </div>           <div style="padding:8px 10px;border:1px solid #ddd;border-top:none;border-radius:0 0 4px 4px">             <table style="width:100%;font-size:12px">               <tr><td><b>Type</b></td><td>National Park / Seashore / Lakeshore</td></tr>               <tr><td><b>State</b></td><td>WY</td></tr>               <tr><td><b>Agency</b></td><td>NPS</td></tr>               <tr><td><b>Acres</b></td><td>2,219,791</td></tr>             </table>             <a href='https://nps.gov' target='_blank' style='font-size:11px'>More info ↗</a>           </div>         </div>         </div>`)[0];
+                popup_c30fba3efefd4654a894c75e6d23c048.setContent(html_1b8ed4567050045330f99987b4757742);
+            
+        
+
+        geo_json_2e6c486d39c1dadfaf9e6a3518e7d5f8.bindPopup(popup_c30fba3efefd4654a894c75e6d23c048)
+        ;
+
+        
+    
+    
+            geo_json_2e6c486d39c1dadfaf9e6a3518e7d5f8.addTo(feature_group_ab473225b5ed5dd91bc1a17a425d0ed2);
+        
+    
+        function geo_json_a7c9adaf33ebcf8c71eeb87876fbd257_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "#1b401b", "fillColor": "#2d6a2d", "fillOpacity": 0.45, "weight": 0.8};
+            }
+        }
+        function geo_json_a7c9adaf33ebcf8c71eeb87876fbd257_highlighter(feature) {
+            switch(feature.id) {
+                default:
+                    return {"fillOpacity": 0.7, "weight": 2.5};
+            }
+        }
+
+        function geo_json_a7c9adaf33ebcf8c71eeb87876fbd257_onEachFeature(feature, layer) {
+
+            layer.on({
+                mouseout: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                            geo_json_a7c9adaf33ebcf8c71eeb87876fbd257.resetStyle(e.target);
+                    }
+                },
+                mouseover: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        const highlightStyle = geo_json_a7c9adaf33ebcf8c71eeb87876fbd257_highlighter(e.target.feature)
+                        e.target.setStyle(highlightStyle);
+                    }
+                },
+            });
+        };
+        var geo_json_a7c9adaf33ebcf8c71eeb87876fbd257 = L.geoJson(null, {
+                onEachFeature: geo_json_a7c9adaf33ebcf8c71eeb87876fbd257_onEachFeature,
+            
+                style: geo_json_a7c9adaf33ebcf8c71eeb87876fbd257_styler,
+            ...{
+}
+        });
+
+        function geo_json_a7c9adaf33ebcf8c71eeb87876fbd257_add (data) {
+            geo_json_a7c9adaf33ebcf8c71eeb87876fbd257
+                .addData(data);
+        }
+            geo_json_a7c9adaf33ebcf8c71eeb87876fbd257_add({"features": [{"geometry": {"coordinates": [[[-124.0, 47.3], [-123.0, 47.3], [-123.0, 48.3], [-124.0, 48.3], [-124.0, 47.3]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_a7c9adaf33ebcf8c71eeb87876fbd257.bindTooltip(
+                `<div>
+                     Olympic National Park
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_2eb4036485b948bdcc1eeab4f86aa514 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_63b00e67c402d306d671343eb7d3f61d = $(`<div id="html_63b00e67c402d306d671343eb7d3f61d" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Arial,sans-serif;min-width:220px">           <div style="background:#2d6a2d;color:white;padding:8px 10px;border-radius:4px 4px 0 0">             <b>Olympic National Park</b>           </div>           <div style="padding:8px 10px;border:1px solid #ddd;border-top:none;border-radius:0 0 4px 4px">             <table style="width:100%;font-size:12px">               <tr><td><b>Type</b></td><td>National Park / Seashore / Lakeshore</td></tr>               <tr><td><b>State</b></td><td>WA</td></tr>               <tr><td><b>Agency</b></td><td>NPS</td></tr>               <tr><td><b>Acres</b></td><td>922,651</td></tr>             </table>             <a href='https://nps.gov' target='_blank' style='font-size:11px'>More info ↗</a>           </div>         </div>         </div>`)[0];
+                popup_2eb4036485b948bdcc1eeab4f86aa514.setContent(html_63b00e67c402d306d671343eb7d3f61d);
+            
+        
+
+        geo_json_a7c9adaf33ebcf8c71eeb87876fbd257.bindPopup(popup_2eb4036485b948bdcc1eeab4f86aa514)
+        ;
+
+        
+    
+    
+            geo_json_a7c9adaf33ebcf8c71eeb87876fbd257.addTo(feature_group_ab473225b5ed5dd91bc1a17a425d0ed2);
+        
+    
+        function geo_json_23aaa88d9399facb3f530c3542f2499e_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "#1b401b", "fillColor": "#2d6a2d", "fillOpacity": 0.45, "weight": 0.8};
+            }
+        }
+        function geo_json_23aaa88d9399facb3f530c3542f2499e_highlighter(feature) {
+            switch(feature.id) {
+                default:
+                    return {"fillOpacity": 0.7, "weight": 2.5};
+            }
+        }
+
+        function geo_json_23aaa88d9399facb3f530c3542f2499e_onEachFeature(feature, layer) {
+
+            layer.on({
+                mouseout: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                            geo_json_23aaa88d9399facb3f530c3542f2499e.resetStyle(e.target);
+                    }
+                },
+                mouseover: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        const highlightStyle = geo_json_23aaa88d9399facb3f530c3542f2499e_highlighter(e.target.feature)
+                        e.target.setStyle(highlightStyle);
+                    }
+                },
+            });
+        };
+        var geo_json_23aaa88d9399facb3f530c3542f2499e = L.geoJson(null, {
+                onEachFeature: geo_json_23aaa88d9399facb3f530c3542f2499e_onEachFeature,
+            
+                style: geo_json_23aaa88d9399facb3f530c3542f2499e_styler,
+            ...{
+}
+        });
+
+        function geo_json_23aaa88d9399facb3f530c3542f2499e_add (data) {
+            geo_json_23aaa88d9399facb3f530c3542f2499e
+                .addData(data);
+        }
+            geo_json_23aaa88d9399facb3f530c3542f2499e_add({"features": [{"geometry": {"coordinates": [[[-106.2, 39.8], [-105.2, 39.8], [-105.2, 40.8], [-106.2, 40.8], [-106.2, 39.8]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_23aaa88d9399facb3f530c3542f2499e.bindTooltip(
+                `<div>
+                     Rocky Mountain National Park
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_c8ea8c7e276cd5656e261e6f10197286 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_ae6860e5c2ffbe0e42d53c2dce421cc9 = $(`<div id="html_ae6860e5c2ffbe0e42d53c2dce421cc9" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Arial,sans-serif;min-width:220px">           <div style="background:#2d6a2d;color:white;padding:8px 10px;border-radius:4px 4px 0 0">             <b>Rocky Mountain National Park</b>           </div>           <div style="padding:8px 10px;border:1px solid #ddd;border-top:none;border-radius:0 0 4px 4px">             <table style="width:100%;font-size:12px">               <tr><td><b>Type</b></td><td>National Park / Seashore / Lakeshore</td></tr>               <tr><td><b>State</b></td><td>CO</td></tr>               <tr><td><b>Agency</b></td><td>NPS</td></tr>               <tr><td><b>Acres</b></td><td>265,828</td></tr>             </table>             <a href='https://nps.gov' target='_blank' style='font-size:11px'>More info ↗</a>           </div>         </div>         </div>`)[0];
+                popup_c8ea8c7e276cd5656e261e6f10197286.setContent(html_ae6860e5c2ffbe0e42d53c2dce421cc9);
+            
+        
+
+        geo_json_23aaa88d9399facb3f530c3542f2499e.bindPopup(popup_c8ea8c7e276cd5656e261e6f10197286)
+        ;
+
+        
+    
+    
+            geo_json_23aaa88d9399facb3f530c3542f2499e.addTo(feature_group_ab473225b5ed5dd91bc1a17a425d0ed2);
+        
+    
+        function geo_json_363ddc5a3df7d6f5a6ba2920fd1975e3_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "#1b401b", "fillColor": "#2d6a2d", "fillOpacity": 0.45, "weight": 0.8};
+            }
+        }
+        function geo_json_363ddc5a3df7d6f5a6ba2920fd1975e3_highlighter(feature) {
+            switch(feature.id) {
+                default:
+                    return {"fillOpacity": 0.7, "weight": 2.5};
+            }
+        }
+
+        function geo_json_363ddc5a3df7d6f5a6ba2920fd1975e3_onEachFeature(feature, layer) {
+
+            layer.on({
+                mouseout: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                            geo_json_363ddc5a3df7d6f5a6ba2920fd1975e3.resetStyle(e.target);
+                    }
+                },
+                mouseover: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        const highlightStyle = geo_json_363ddc5a3df7d6f5a6ba2920fd1975e3_highlighter(e.target.feature)
+                        e.target.setStyle(highlightStyle);
+                    }
+                },
+            });
+        };
+        var geo_json_363ddc5a3df7d6f5a6ba2920fd1975e3 = L.geoJson(null, {
+                onEachFeature: geo_json_363ddc5a3df7d6f5a6ba2920fd1975e3_onEachFeature,
+            
+                style: geo_json_363ddc5a3df7d6f5a6ba2920fd1975e3_styler,
+            ...{
+}
+        });
+
+        function geo_json_363ddc5a3df7d6f5a6ba2920fd1975e3_add (data) {
+            geo_json_363ddc5a3df7d6f5a6ba2920fd1975e3
+                .addData(data);
+        }
+            geo_json_363ddc5a3df7d6f5a6ba2920fd1975e3_add({"features": [{"geometry": {"coordinates": [[[-84.0, 35.1], [-83.0, 35.1], [-83.0, 36.1], [-84.0, 36.1], [-84.0, 35.1]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_363ddc5a3df7d6f5a6ba2920fd1975e3.bindTooltip(
+                `<div>
+                     Great Smoky Mountains National Park
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_94826042b31cabbe64a33134a0be57ed = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_db35a46ff3c99b097b857e9cfe40e7c9 = $(`<div id="html_db35a46ff3c99b097b857e9cfe40e7c9" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Arial,sans-serif;min-width:220px">           <div style="background:#2d6a2d;color:white;padding:8px 10px;border-radius:4px 4px 0 0">             <b>Great Smoky Mountains National Park</b>           </div>           <div style="padding:8px 10px;border:1px solid #ddd;border-top:none;border-radius:0 0 4px 4px">             <table style="width:100%;font-size:12px">               <tr><td><b>Type</b></td><td>National Park / Seashore / Lakeshore</td></tr>               <tr><td><b>State</b></td><td>TN</td></tr>               <tr><td><b>Agency</b></td><td>NPS</td></tr>               <tr><td><b>Acres</b></td><td>521,086</td></tr>             </table>             <a href='https://nps.gov' target='_blank' style='font-size:11px'>More info ↗</a>           </div>         </div>         </div>`)[0];
+                popup_94826042b31cabbe64a33134a0be57ed.setContent(html_db35a46ff3c99b097b857e9cfe40e7c9);
+            
+        
+
+        geo_json_363ddc5a3df7d6f5a6ba2920fd1975e3.bindPopup(popup_94826042b31cabbe64a33134a0be57ed)
+        ;
+
+        
+    
+    
+            geo_json_363ddc5a3df7d6f5a6ba2920fd1975e3.addTo(feature_group_ab473225b5ed5dd91bc1a17a425d0ed2);
+        
+    
+        function geo_json_5bf096d9e866658e7192aa67c6ee50a3_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "#1b401b", "fillColor": "#2d6a2d", "fillOpacity": 0.45, "weight": 0.8};
+            }
+        }
+        function geo_json_5bf096d9e866658e7192aa67c6ee50a3_highlighter(feature) {
+            switch(feature.id) {
+                default:
+                    return {"fillOpacity": 0.7, "weight": 2.5};
+            }
+        }
+
+        function geo_json_5bf096d9e866658e7192aa67c6ee50a3_onEachFeature(feature, layer) {
+
+            layer.on({
+                mouseout: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                            geo_json_5bf096d9e866658e7192aa67c6ee50a3.resetStyle(e.target);
+                    }
+                },
+                mouseover: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        const highlightStyle = geo_json_5bf096d9e866658e7192aa67c6ee50a3_highlighter(e.target.feature)
+                        e.target.setStyle(highlightStyle);
+                    }
+                },
+            });
+        };
+        var geo_json_5bf096d9e866658e7192aa67c6ee50a3 = L.geoJson(null, {
+                onEachFeature: geo_json_5bf096d9e866658e7192aa67c6ee50a3_onEachFeature,
+            
+                style: geo_json_5bf096d9e866658e7192aa67c6ee50a3_styler,
+            ...{
+}
+        });
+
+        function geo_json_5bf096d9e866658e7192aa67c6ee50a3_add (data) {
+            geo_json_5bf096d9e866658e7192aa67c6ee50a3
+                .addData(data);
+        }
+            geo_json_5bf096d9e866658e7192aa67c6ee50a3_add({"features": [{"geometry": {"coordinates": [[[-113.5, 36.8], [-112.5, 36.8], [-112.5, 37.8], [-113.5, 37.8], [-113.5, 36.8]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_5bf096d9e866658e7192aa67c6ee50a3.bindTooltip(
+                `<div>
+                     Zion National Park
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_998f06903fe3847c3a3033da997ace3b = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_561d63e4bfe3e0580260b507729be2a5 = $(`<div id="html_561d63e4bfe3e0580260b507729be2a5" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Arial,sans-serif;min-width:220px">           <div style="background:#2d6a2d;color:white;padding:8px 10px;border-radius:4px 4px 0 0">             <b>Zion National Park</b>           </div>           <div style="padding:8px 10px;border:1px solid #ddd;border-top:none;border-radius:0 0 4px 4px">             <table style="width:100%;font-size:12px">               <tr><td><b>Type</b></td><td>National Park / Seashore / Lakeshore</td></tr>               <tr><td><b>State</b></td><td>UT</td></tr>               <tr><td><b>Agency</b></td><td>NPS</td></tr>               <tr><td><b>Acres</b></td><td>147,243</td></tr>             </table>             <a href='https://nps.gov' target='_blank' style='font-size:11px'>More info ↗</a>           </div>         </div>         </div>`)[0];
+                popup_998f06903fe3847c3a3033da997ace3b.setContent(html_561d63e4bfe3e0580260b507729be2a5);
+            
+        
+
+        geo_json_5bf096d9e866658e7192aa67c6ee50a3.bindPopup(popup_998f06903fe3847c3a3033da997ace3b)
+        ;
+
+        
+    
+    
+            geo_json_5bf096d9e866658e7192aa67c6ee50a3.addTo(feature_group_ab473225b5ed5dd91bc1a17a425d0ed2);
+        
+    
+        function geo_json_71c8b7971b72882dfb273e553ca184a9_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "#1b401b", "fillColor": "#2d6a2d", "fillOpacity": 0.45, "weight": 0.8};
+            }
+        }
+        function geo_json_71c8b7971b72882dfb273e553ca184a9_highlighter(feature) {
+            switch(feature.id) {
+                default:
+                    return {"fillOpacity": 0.7, "weight": 2.5};
+            }
+        }
+
+        function geo_json_71c8b7971b72882dfb273e553ca184a9_onEachFeature(feature, layer) {
+
+            layer.on({
+                mouseout: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                            geo_json_71c8b7971b72882dfb273e553ca184a9.resetStyle(e.target);
+                    }
+                },
+                mouseover: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        const highlightStyle = geo_json_71c8b7971b72882dfb273e553ca184a9_highlighter(e.target.feature)
+                        e.target.setStyle(highlightStyle);
+                    }
+                },
+            });
+        };
+        var geo_json_71c8b7971b72882dfb273e553ca184a9 = L.geoJson(null, {
+                onEachFeature: geo_json_71c8b7971b72882dfb273e553ca184a9_onEachFeature,
+            
+                style: geo_json_71c8b7971b72882dfb273e553ca184a9_styler,
+            ...{
+}
+        });
+
+        function geo_json_71c8b7971b72882dfb273e553ca184a9_add (data) {
+            geo_json_71c8b7971b72882dfb273e553ca184a9
+                .addData(data);
+        }
+            geo_json_71c8b7971b72882dfb273e553ca184a9_add({"features": [{"geometry": {"coordinates": [[[-114.2, 48.2], [-113.2, 48.2], [-113.2, 49.2], [-114.2, 49.2], [-114.2, 48.2]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_71c8b7971b72882dfb273e553ca184a9.bindTooltip(
+                `<div>
+                     Glacier National Park
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_8a7d585a08e6d84c5c7dd348281d0f1c = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_6d7e45604bbc7a4df23c2a853b714562 = $(`<div id="html_6d7e45604bbc7a4df23c2a853b714562" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Arial,sans-serif;min-width:220px">           <div style="background:#2d6a2d;color:white;padding:8px 10px;border-radius:4px 4px 0 0">             <b>Glacier National Park</b>           </div>           <div style="padding:8px 10px;border:1px solid #ddd;border-top:none;border-radius:0 0 4px 4px">             <table style="width:100%;font-size:12px">               <tr><td><b>Type</b></td><td>National Park / Seashore / Lakeshore</td></tr>               <tr><td><b>State</b></td><td>MT</td></tr>               <tr><td><b>Agency</b></td><td>NPS</td></tr>               <tr><td><b>Acres</b></td><td>1,013,572</td></tr>             </table>             <a href='https://nps.gov' target='_blank' style='font-size:11px'>More info ↗</a>           </div>         </div>         </div>`)[0];
+                popup_8a7d585a08e6d84c5c7dd348281d0f1c.setContent(html_6d7e45604bbc7a4df23c2a853b714562);
+            
+        
+
+        geo_json_71c8b7971b72882dfb273e553ca184a9.bindPopup(popup_8a7d585a08e6d84c5c7dd348281d0f1c)
+        ;
+
+        
+    
+    
+            geo_json_71c8b7971b72882dfb273e553ca184a9.addTo(feature_group_ab473225b5ed5dd91bc1a17a425d0ed2);
+        
+    
+        function geo_json_04d898d84601d01bc23b59b6b63895a7_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "#1b401b", "fillColor": "#2d6a2d", "fillOpacity": 0.45, "weight": 0.8};
+            }
+        }
+        function geo_json_04d898d84601d01bc23b59b6b63895a7_highlighter(feature) {
+            switch(feature.id) {
+                default:
+                    return {"fillOpacity": 0.7, "weight": 2.5};
+            }
+        }
+
+        function geo_json_04d898d84601d01bc23b59b6b63895a7_onEachFeature(feature, layer) {
+
+            layer.on({
+                mouseout: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                            geo_json_04d898d84601d01bc23b59b6b63895a7.resetStyle(e.target);
+                    }
+                },
+                mouseover: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        const highlightStyle = geo_json_04d898d84601d01bc23b59b6b63895a7_highlighter(e.target.feature)
+                        e.target.setStyle(highlightStyle);
+                    }
+                },
+            });
+        };
+        var geo_json_04d898d84601d01bc23b59b6b63895a7 = L.geoJson(null, {
+                onEachFeature: geo_json_04d898d84601d01bc23b59b6b63895a7_onEachFeature,
+            
+                style: geo_json_04d898d84601d01bc23b59b6b63895a7_styler,
+            ...{
+}
+        });
+
+        function geo_json_04d898d84601d01bc23b59b6b63895a7_add (data) {
+            geo_json_04d898d84601d01bc23b59b6b63895a7
+                .addData(data);
+        }
+            geo_json_04d898d84601d01bc23b59b6b63895a7_add({"features": [{"geometry": {"coordinates": [[[-68.8, 43.8], [-67.8, 43.8], [-67.8, 44.8], [-68.8, 44.8], [-68.8, 43.8]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_04d898d84601d01bc23b59b6b63895a7.bindTooltip(
+                `<div>
+                     Acadia National Park
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_bde82e7641f8de1c2d985050a747ff3e = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_32e73d1ba2f5b88a4730a9c81817b7dd = $(`<div id="html_32e73d1ba2f5b88a4730a9c81817b7dd" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Arial,sans-serif;min-width:220px">           <div style="background:#2d6a2d;color:white;padding:8px 10px;border-radius:4px 4px 0 0">             <b>Acadia National Park</b>           </div>           <div style="padding:8px 10px;border:1px solid #ddd;border-top:none;border-radius:0 0 4px 4px">             <table style="width:100%;font-size:12px">               <tr><td><b>Type</b></td><td>National Park / Seashore / Lakeshore</td></tr>               <tr><td><b>State</b></td><td>ME</td></tr>               <tr><td><b>Agency</b></td><td>NPS</td></tr>               <tr><td><b>Acres</b></td><td>49,071</td></tr>             </table>             <a href='https://nps.gov' target='_blank' style='font-size:11px'>More info ↗</a>           </div>         </div>         </div>`)[0];
+                popup_bde82e7641f8de1c2d985050a747ff3e.setContent(html_32e73d1ba2f5b88a4730a9c81817b7dd);
+            
+        
+
+        geo_json_04d898d84601d01bc23b59b6b63895a7.bindPopup(popup_bde82e7641f8de1c2d985050a747ff3e)
+        ;
+
+        
+    
+    
+            geo_json_04d898d84601d01bc23b59b6b63895a7.addTo(feature_group_ab473225b5ed5dd91bc1a17a425d0ed2);
+        
+    
+        function geo_json_2166c6da30f0424471283e07fc4593dd_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "#1b401b", "fillColor": "#2d6a2d", "fillOpacity": 0.45, "weight": 0.8};
+            }
+        }
+        function geo_json_2166c6da30f0424471283e07fc4593dd_highlighter(feature) {
+            switch(feature.id) {
+                default:
+                    return {"fillOpacity": 0.7, "weight": 2.5};
+            }
+        }
+
+        function geo_json_2166c6da30f0424471283e07fc4593dd_onEachFeature(feature, layer) {
+
+            layer.on({
+                mouseout: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                            geo_json_2166c6da30f0424471283e07fc4593dd.resetStyle(e.target);
+                    }
+                },
+                mouseover: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        const highlightStyle = geo_json_2166c6da30f0424471283e07fc4593dd_highlighter(e.target.feature)
+                        e.target.setStyle(highlightStyle);
+                    }
+                },
+            });
+        };
+        var geo_json_2166c6da30f0424471283e07fc4593dd = L.geoJson(null, {
+                onEachFeature: geo_json_2166c6da30f0424471283e07fc4593dd_onEachFeature,
+            
+                style: geo_json_2166c6da30f0424471283e07fc4593dd_styler,
+            ...{
+}
+        });
+
+        function geo_json_2166c6da30f0424471283e07fc4593dd_add (data) {
+            geo_json_2166c6da30f0424471283e07fc4593dd
+                .addData(data);
+        }
+            geo_json_2166c6da30f0424471283e07fc4593dd_add({"features": [{"geometry": {"coordinates": [[[-110.1, 38.2], [-109.1, 38.2], [-109.1, 39.2], [-110.1, 39.2], [-110.1, 38.2]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_2166c6da30f0424471283e07fc4593dd.bindTooltip(
+                `<div>
+                     Arches National Park
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_e5795907059f67a721f6d23e168ffea1 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_e3ab40b6ac3a2bb2e48a900f44a33c8a = $(`<div id="html_e3ab40b6ac3a2bb2e48a900f44a33c8a" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Arial,sans-serif;min-width:220px">           <div style="background:#2d6a2d;color:white;padding:8px 10px;border-radius:4px 4px 0 0">             <b>Arches National Park</b>           </div>           <div style="padding:8px 10px;border:1px solid #ddd;border-top:none;border-radius:0 0 4px 4px">             <table style="width:100%;font-size:12px">               <tr><td><b>Type</b></td><td>National Park / Seashore / Lakeshore</td></tr>               <tr><td><b>State</b></td><td>UT</td></tr>               <tr><td><b>Agency</b></td><td>NPS</td></tr>               <tr><td><b>Acres</b></td><td>76,679</td></tr>             </table>             <a href='https://nps.gov' target='_blank' style='font-size:11px'>More info ↗</a>           </div>         </div>         </div>`)[0];
+                popup_e5795907059f67a721f6d23e168ffea1.setContent(html_e3ab40b6ac3a2bb2e48a900f44a33c8a);
+            
+        
+
+        geo_json_2166c6da30f0424471283e07fc4593dd.bindPopup(popup_e5795907059f67a721f6d23e168ffea1)
+        ;
+
+        
+    
+    
+            geo_json_2166c6da30f0424471283e07fc4593dd.addTo(feature_group_ab473225b5ed5dd91bc1a17a425d0ed2);
+        
+    
+            feature_group_ab473225b5ed5dd91bc1a17a425d0ed2.addTo(map_6d752d3326972a318f6f49bfa38cac40);
+        
+    
+            var feature_group_692427f55b0ac46246bc5fbe4833f58d = L.featureGroup(
+                {
+}
+            );
+        
+    
+        function geo_json_39af2b37c5566b4a73dd91e598752c04_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "#2c5682", "fillColor": "#4a90d9", "fillOpacity": 0.45, "weight": 0.8};
+            }
+        }
+        function geo_json_39af2b37c5566b4a73dd91e598752c04_highlighter(feature) {
+            switch(feature.id) {
+                default:
+                    return {"fillOpacity": 0.7, "weight": 2.5};
+            }
+        }
+
+        function geo_json_39af2b37c5566b4a73dd91e598752c04_onEachFeature(feature, layer) {
+
+            layer.on({
+                mouseout: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                            geo_json_39af2b37c5566b4a73dd91e598752c04.resetStyle(e.target);
+                    }
+                },
+                mouseover: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        const highlightStyle = geo_json_39af2b37c5566b4a73dd91e598752c04_highlighter(e.target.feature)
+                        e.target.setStyle(highlightStyle);
+                    }
+                },
+            });
+        };
+        var geo_json_39af2b37c5566b4a73dd91e598752c04 = L.geoJson(null, {
+                onEachFeature: geo_json_39af2b37c5566b4a73dd91e598752c04_onEachFeature,
+            
+                style: geo_json_39af2b37c5566b4a73dd91e598752c04_styler,
+            ...{
+}
+        });
+
+        function geo_json_39af2b37c5566b4a73dd91e598752c04_add (data) {
+            geo_json_39af2b37c5566b4a73dd91e598752c04
+                .addData(data);
+        }
+            geo_json_39af2b37c5566b4a73dd91e598752c04_add({"features": [{"geometry": {"coordinates": [[[-116.80000000000001, 32.9], [-116.0, 32.9], [-116.0, 33.699999999999996], [-116.80000000000001, 33.699999999999996], [-116.80000000000001, 32.9]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_39af2b37c5566b4a73dd91e598752c04.bindTooltip(
+                `<div>
+                     Anza-Borrego Desert State Park
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_89744c6d56cc51f3ef2dcaf2b19a8059 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_ae09e4f7df50aba32e3bfb62a590c642 = $(`<div id="html_ae09e4f7df50aba32e3bfb62a590c642" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Arial,sans-serif;min-width:220px">           <div style="background:#4a90d9;color:white;padding:8px 10px;border-radius:4px 4px 0 0">             <b>Anza-Borrego Desert State Park</b>           </div>           <div style="padding:8px 10px;border:1px solid #ddd;border-top:none;border-radius:0 0 4px 4px">             <table style="width:100%;font-size:12px">               <tr><td><b>Type</b></td><td>State Park</td></tr>               <tr><td><b>State</b></td><td>CA</td></tr>               <tr><td><b>Agency</b></td><td>California State Parks</td></tr>               <tr><td><b>Acres</b></td><td>585,930</td></tr>             </table>                        </div>         </div>         </div>`)[0];
+                popup_89744c6d56cc51f3ef2dcaf2b19a8059.setContent(html_ae09e4f7df50aba32e3bfb62a590c642);
+            
+        
+
+        geo_json_39af2b37c5566b4a73dd91e598752c04.bindPopup(popup_89744c6d56cc51f3ef2dcaf2b19a8059)
+        ;
+
+        
+    
+    
+            geo_json_39af2b37c5566b4a73dd91e598752c04.addTo(feature_group_692427f55b0ac46246bc5fbe4833f58d);
+        
+    
+        function geo_json_1cd7721d638e6dbce8ac6270c898d735_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "#2c5682", "fillColor": "#4a90d9", "fillOpacity": 0.45, "weight": 0.8};
+            }
+        }
+        function geo_json_1cd7721d638e6dbce8ac6270c898d735_highlighter(feature) {
+            switch(feature.id) {
+                default:
+                    return {"fillOpacity": 0.7, "weight": 2.5};
+            }
+        }
+
+        function geo_json_1cd7721d638e6dbce8ac6270c898d735_onEachFeature(feature, layer) {
+
+            layer.on({
+                mouseout: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                            geo_json_1cd7721d638e6dbce8ac6270c898d735.resetStyle(e.target);
+                    }
+                },
+                mouseover: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        const highlightStyle = geo_json_1cd7721d638e6dbce8ac6270c898d735_highlighter(e.target.feature)
+                        e.target.setStyle(highlightStyle);
+                    }
+                },
+            });
+        };
+        var geo_json_1cd7721d638e6dbce8ac6270c898d735 = L.geoJson(null, {
+                onEachFeature: geo_json_1cd7721d638e6dbce8ac6270c898d735_onEachFeature,
+            
+                style: geo_json_1cd7721d638e6dbce8ac6270c898d735_styler,
+            ...{
+}
+        });
+
+        function geo_json_1cd7721d638e6dbce8ac6270c898d735_add (data) {
+            geo_json_1cd7721d638e6dbce8ac6270c898d735
+                .addData(data);
+        }
+            geo_json_1cd7721d638e6dbce8ac6270c898d735_add({"features": [{"geometry": {"coordinates": [[[-74.4, 43.6], [-73.6, 43.6], [-73.6, 44.4], [-74.4, 44.4], [-74.4, 43.6]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_1cd7721d638e6dbce8ac6270c898d735.bindTooltip(
+                `<div>
+                     Adirondack Park
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_fb733614125616ed4281ff9324c1bfb2 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_2362c86f7708641058bb337079c59475 = $(`<div id="html_2362c86f7708641058bb337079c59475" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Arial,sans-serif;min-width:220px">           <div style="background:#4a90d9;color:white;padding:8px 10px;border-radius:4px 4px 0 0">             <b>Adirondack Park</b>           </div>           <div style="padding:8px 10px;border:1px solid #ddd;border-top:none;border-radius:0 0 4px 4px">             <table style="width:100%;font-size:12px">               <tr><td><b>Type</b></td><td>State Park</td></tr>               <tr><td><b>State</b></td><td>NY</td></tr>               <tr><td><b>Agency</b></td><td>NY DEC</td></tr>               <tr><td><b>Acres</b></td><td>6,000,000</td></tr>             </table>                        </div>         </div>         </div>`)[0];
+                popup_fb733614125616ed4281ff9324c1bfb2.setContent(html_2362c86f7708641058bb337079c59475);
+            
+        
+
+        geo_json_1cd7721d638e6dbce8ac6270c898d735.bindPopup(popup_fb733614125616ed4281ff9324c1bfb2)
+        ;
+
+        
+    
+    
+            geo_json_1cd7721d638e6dbce8ac6270c898d735.addTo(feature_group_692427f55b0ac46246bc5fbe4833f58d);
+        
+    
+        function geo_json_a6894c18bf233f55e36b17a7992c12a8_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "#2c5682", "fillColor": "#4a90d9", "fillOpacity": 0.45, "weight": 0.8};
+            }
+        }
+        function geo_json_a6894c18bf233f55e36b17a7992c12a8_highlighter(feature) {
+            switch(feature.id) {
+                default:
+                    return {"fillOpacity": 0.7, "weight": 2.5};
+            }
+        }
+
+        function geo_json_a6894c18bf233f55e36b17a7992c12a8_onEachFeature(feature, layer) {
+
+            layer.on({
+                mouseout: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                            geo_json_a6894c18bf233f55e36b17a7992c12a8.resetStyle(e.target);
+                    }
+                },
+                mouseover: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        const highlightStyle = geo_json_a6894c18bf233f55e36b17a7992c12a8_highlighter(e.target.feature)
+                        e.target.setStyle(highlightStyle);
+                    }
+                },
+            });
+        };
+        var geo_json_a6894c18bf233f55e36b17a7992c12a8 = L.geoJson(null, {
+                onEachFeature: geo_json_a6894c18bf233f55e36b17a7992c12a8_onEachFeature,
+            
+                style: geo_json_a6894c18bf233f55e36b17a7992c12a8_styler,
+            ...{
+}
+        });
+
+        function geo_json_a6894c18bf233f55e36b17a7992c12a8_add (data) {
+            geo_json_a6894c18bf233f55e36b17a7992c12a8
+                .addData(data);
+        }
+            geo_json_a6894c18bf233f55e36b17a7992c12a8_add({"features": [{"geometry": {"coordinates": [[[-103.9, 43.300000000000004], [-103.1, 43.300000000000004], [-103.1, 44.1], [-103.9, 44.1], [-103.9, 43.300000000000004]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_a6894c18bf233f55e36b17a7992c12a8.bindTooltip(
+                `<div>
+                     Custer State Park
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_ad449f16f764872eb1a88a15aed562ba = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_aed563809f5a9fdd752f26f667030ffd = $(`<div id="html_aed563809f5a9fdd752f26f667030ffd" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Arial,sans-serif;min-width:220px">           <div style="background:#4a90d9;color:white;padding:8px 10px;border-radius:4px 4px 0 0">             <b>Custer State Park</b>           </div>           <div style="padding:8px 10px;border:1px solid #ddd;border-top:none;border-radius:0 0 4px 4px">             <table style="width:100%;font-size:12px">               <tr><td><b>Type</b></td><td>State Park</td></tr>               <tr><td><b>State</b></td><td>SD</td></tr>               <tr><td><b>Agency</b></td><td>SD Game Fish Parks</td></tr>               <tr><td><b>Acres</b></td><td>71,000</td></tr>             </table>                        </div>         </div>         </div>`)[0];
+                popup_ad449f16f764872eb1a88a15aed562ba.setContent(html_aed563809f5a9fdd752f26f667030ffd);
+            
+        
+
+        geo_json_a6894c18bf233f55e36b17a7992c12a8.bindPopup(popup_ad449f16f764872eb1a88a15aed562ba)
+        ;
+
+        
+    
+    
+            geo_json_a6894c18bf233f55e36b17a7992c12a8.addTo(feature_group_692427f55b0ac46246bc5fbe4833f58d);
+        
+    
+        function geo_json_9b6c33ccf3e269439ca232bed770e8a1_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "#2c5682", "fillColor": "#4a90d9", "fillOpacity": 0.45, "weight": 0.8};
+            }
+        }
+        function geo_json_9b6c33ccf3e269439ca232bed770e8a1_highlighter(feature) {
+            switch(feature.id) {
+                default:
+                    return {"fillOpacity": 0.7, "weight": 2.5};
+            }
+        }
+
+        function geo_json_9b6c33ccf3e269439ca232bed770e8a1_onEachFeature(feature, layer) {
+
+            layer.on({
+                mouseout: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                            geo_json_9b6c33ccf3e269439ca232bed770e8a1.resetStyle(e.target);
+                    }
+                },
+                mouseover: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        const highlightStyle = geo_json_9b6c33ccf3e269439ca232bed770e8a1_highlighter(e.target.feature)
+                        e.target.setStyle(highlightStyle);
+                    }
+                },
+            });
+        };
+        var geo_json_9b6c33ccf3e269439ca232bed770e8a1 = L.geoJson(null, {
+                onEachFeature: geo_json_9b6c33ccf3e269439ca232bed770e8a1_onEachFeature,
+            
+                style: geo_json_9b6c33ccf3e269439ca232bed770e8a1_styler,
+            ...{
+}
+        });
+
+        function geo_json_9b6c33ccf3e269439ca232bed770e8a1_add (data) {
+            geo_json_9b6c33ccf3e269439ca232bed770e8a1
+                .addData(data);
+        }
+            geo_json_9b6c33ccf3e269439ca232bed770e8a1_add({"features": [{"geometry": {"coordinates": [[[-85.80000000000001, 35.300000000000004], [-85.0, 35.300000000000004], [-85.0, 36.1], [-85.80000000000001, 36.1], [-85.80000000000001, 35.300000000000004]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_9b6c33ccf3e269439ca232bed770e8a1.bindTooltip(
+                `<div>
+                     Fall Creek Falls State Park
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_9c2d0e81907350c83b3a1ab9ea766e90 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_f61f67d0580b2c3e48c0dcaf1a5e6806 = $(`<div id="html_f61f67d0580b2c3e48c0dcaf1a5e6806" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Arial,sans-serif;min-width:220px">           <div style="background:#4a90d9;color:white;padding:8px 10px;border-radius:4px 4px 0 0">             <b>Fall Creek Falls State Park</b>           </div>           <div style="padding:8px 10px;border:1px solid #ddd;border-top:none;border-radius:0 0 4px 4px">             <table style="width:100%;font-size:12px">               <tr><td><b>Type</b></td><td>State Park</td></tr>               <tr><td><b>State</b></td><td>TN</td></tr>               <tr><td><b>Agency</b></td><td>TN State Parks</td></tr>               <tr><td><b>Acres</b></td><td>26,000</td></tr>             </table>                        </div>         </div>         </div>`)[0];
+                popup_9c2d0e81907350c83b3a1ab9ea766e90.setContent(html_f61f67d0580b2c3e48c0dcaf1a5e6806);
+            
+        
+
+        geo_json_9b6c33ccf3e269439ca232bed770e8a1.bindPopup(popup_9c2d0e81907350c83b3a1ab9ea766e90)
+        ;
+
+        
+    
+    
+            geo_json_9b6c33ccf3e269439ca232bed770e8a1.addTo(feature_group_692427f55b0ac46246bc5fbe4833f58d);
+        
+    
+        function geo_json_d483813cfc91de8bd0c1d644b319625e_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "#2c5682", "fillColor": "#4a90d9", "fillOpacity": 0.45, "weight": 0.8};
+            }
+        }
+        function geo_json_d483813cfc91de8bd0c1d644b319625e_highlighter(feature) {
+            switch(feature.id) {
+                default:
+                    return {"fillOpacity": 0.7, "weight": 2.5};
+            }
+        }
+
+        function geo_json_d483813cfc91de8bd0c1d644b319625e_onEachFeature(feature, layer) {
+
+            layer.on({
+                mouseout: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                            geo_json_d483813cfc91de8bd0c1d644b319625e.resetStyle(e.target);
+                    }
+                },
+                mouseover: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        const highlightStyle = geo_json_d483813cfc91de8bd0c1d644b319625e_highlighter(e.target.feature)
+                        e.target.setStyle(highlightStyle);
+                    }
+                },
+            });
+        };
+        var geo_json_d483813cfc91de8bd0c1d644b319625e = L.geoJson(null, {
+                onEachFeature: geo_json_d483813cfc91de8bd0c1d644b319625e_onEachFeature,
+            
+                style: geo_json_d483813cfc91de8bd0c1d644b319625e_styler,
+            ...{
+}
+        });
+
+        function geo_json_d483813cfc91de8bd0c1d644b319625e_add (data) {
+            geo_json_d483813cfc91de8bd0c1d644b319625e
+                .addData(data);
+        }
+            geo_json_d483813cfc91de8bd0c1d644b319625e_add({"features": [{"geometry": {"coordinates": [[[-72.10000000000001, 43.7], [-71.3, 43.7], [-71.3, 44.5], [-72.10000000000001, 44.5], [-72.10000000000001, 43.7]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_d483813cfc91de8bd0c1d644b319625e.bindTooltip(
+                `<div>
+                     Franconia Notch State Park
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_13d61f5cc766ad0c62c78ba63057c360 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_b246ae6ae2f94bc614be2f1f1025a1f0 = $(`<div id="html_b246ae6ae2f94bc614be2f1f1025a1f0" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Arial,sans-serif;min-width:220px">           <div style="background:#4a90d9;color:white;padding:8px 10px;border-radius:4px 4px 0 0">             <b>Franconia Notch State Park</b>           </div>           <div style="padding:8px 10px;border:1px solid #ddd;border-top:none;border-radius:0 0 4px 4px">             <table style="width:100%;font-size:12px">               <tr><td><b>Type</b></td><td>State Park</td></tr>               <tr><td><b>State</b></td><td>NH</td></tr>               <tr><td><b>Agency</b></td><td>NH State Parks</td></tr>               <tr><td><b>Acres</b></td><td>8,000</td></tr>             </table>                        </div>         </div>         </div>`)[0];
+                popup_13d61f5cc766ad0c62c78ba63057c360.setContent(html_b246ae6ae2f94bc614be2f1f1025a1f0);
+            
+        
+
+        geo_json_d483813cfc91de8bd0c1d644b319625e.bindPopup(popup_13d61f5cc766ad0c62c78ba63057c360)
+        ;
+
+        
+    
+    
+            geo_json_d483813cfc91de8bd0c1d644b319625e.addTo(feature_group_692427f55b0ac46246bc5fbe4833f58d);
+        
+    
+        function geo_json_111dcc10b010726ac3089a984d8f043c_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "#2c5682", "fillColor": "#4a90d9", "fillOpacity": 0.45, "weight": 0.8};
+            }
+        }
+        function geo_json_111dcc10b010726ac3089a984d8f043c_highlighter(feature) {
+            switch(feature.id) {
+                default:
+                    return {"fillOpacity": 0.7, "weight": 2.5};
+            }
+        }
+
+        function geo_json_111dcc10b010726ac3089a984d8f043c_onEachFeature(feature, layer) {
+
+            layer.on({
+                mouseout: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                            geo_json_111dcc10b010726ac3089a984d8f043c.resetStyle(e.target);
+                    }
+                },
+                mouseover: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        const highlightStyle = geo_json_111dcc10b010726ac3089a984d8f043c_highlighter(e.target.feature)
+                        e.target.setStyle(highlightStyle);
+                    }
+                },
+            });
+        };
+        var geo_json_111dcc10b010726ac3089a984d8f043c = L.geoJson(null, {
+                onEachFeature: geo_json_111dcc10b010726ac3089a984d8f043c_onEachFeature,
+            
+                style: geo_json_111dcc10b010726ac3089a984d8f043c_styler,
+            ...{
+}
+        });
+
+        function geo_json_111dcc10b010726ac3089a984d8f043c_add (data) {
+            geo_json_111dcc10b010726ac3089a984d8f043c
+                .addData(data);
+        }
+            geo_json_111dcc10b010726ac3089a984d8f043c_add({"features": [{"geometry": {"coordinates": [[[-104.2, 29.1], [-103.39999999999999, 29.1], [-103.39999999999999, 29.9], [-104.2, 29.9], [-104.2, 29.1]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_111dcc10b010726ac3089a984d8f043c.bindTooltip(
+                `<div>
+                     Big Bend Ranch State Park
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_e4bd0a0b231ece367a2b2f1e0a95ec4d = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_dea04aad9e0fe67bd6749e52fa13005f = $(`<div id="html_dea04aad9e0fe67bd6749e52fa13005f" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Arial,sans-serif;min-width:220px">           <div style="background:#4a90d9;color:white;padding:8px 10px;border-radius:4px 4px 0 0">             <b>Big Bend Ranch State Park</b>           </div>           <div style="padding:8px 10px;border:1px solid #ddd;border-top:none;border-radius:0 0 4px 4px">             <table style="width:100%;font-size:12px">               <tr><td><b>Type</b></td><td>State Park</td></tr>               <tr><td><b>State</b></td><td>TX</td></tr>               <tr><td><b>Agency</b></td><td>TX Parks Wildlife</td></tr>               <tr><td><b>Acres</b></td><td>300,000</td></tr>             </table>                        </div>         </div>         </div>`)[0];
+                popup_e4bd0a0b231ece367a2b2f1e0a95ec4d.setContent(html_dea04aad9e0fe67bd6749e52fa13005f);
+            
+        
+
+        geo_json_111dcc10b010726ac3089a984d8f043c.bindPopup(popup_e4bd0a0b231ece367a2b2f1e0a95ec4d)
+        ;
+
+        
+    
+    
+            geo_json_111dcc10b010726ac3089a984d8f043c.addTo(feature_group_692427f55b0ac46246bc5fbe4833f58d);
+        
+    
+        function geo_json_69806ea0756af2b124622c1b082a7cd5_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "#2c5682", "fillColor": "#4a90d9", "fillOpacity": 0.45, "weight": 0.8};
+            }
+        }
+        function geo_json_69806ea0756af2b124622c1b082a7cd5_highlighter(feature) {
+            switch(feature.id) {
+                default:
+                    return {"fillOpacity": 0.7, "weight": 2.5};
+            }
+        }
+
+        function geo_json_69806ea0756af2b124622c1b082a7cd5_onEachFeature(feature, layer) {
+
+            layer.on({
+                mouseout: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                            geo_json_69806ea0756af2b124622c1b082a7cd5.resetStyle(e.target);
+                    }
+                },
+                mouseover: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        const highlightStyle = geo_json_69806ea0756af2b124622c1b082a7cd5_highlighter(e.target.feature)
+                        e.target.setStyle(highlightStyle);
+                    }
+                },
+            });
+        };
+        var geo_json_69806ea0756af2b124622c1b082a7cd5 = L.geoJson(null, {
+                onEachFeature: geo_json_69806ea0756af2b124622c1b082a7cd5_onEachFeature,
+            
+                style: geo_json_69806ea0756af2b124622c1b082a7cd5_styler,
+            ...{
+}
+        });
+
+        function geo_json_69806ea0756af2b124622c1b082a7cd5_add (data) {
+            geo_json_69806ea0756af2b124622c1b082a7cd5
+                .addData(data);
+        }
+            geo_json_69806ea0756af2b124622c1b082a7cd5_add({"features": [{"geometry": {"coordinates": [[[-149.9, 60.9], [-149.1, 60.9], [-149.1, 61.699999999999996], [-149.9, 61.699999999999996], [-149.9, 60.9]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_69806ea0756af2b124622c1b082a7cd5.bindTooltip(
+                `<div>
+                     Chugach State Park
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_7fb72e16f640edf4b1368b85ec27ad72 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_9d77a0e07c9ab4a3bafcc796d77ecfca = $(`<div id="html_9d77a0e07c9ab4a3bafcc796d77ecfca" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Arial,sans-serif;min-width:220px">           <div style="background:#4a90d9;color:white;padding:8px 10px;border-radius:4px 4px 0 0">             <b>Chugach State Park</b>           </div>           <div style="padding:8px 10px;border:1px solid #ddd;border-top:none;border-radius:0 0 4px 4px">             <table style="width:100%;font-size:12px">               <tr><td><b>Type</b></td><td>State Park</td></tr>               <tr><td><b>State</b></td><td>AK</td></tr>               <tr><td><b>Agency</b></td><td>AK State Parks</td></tr>               <tr><td><b>Acres</b></td><td>495,000</td></tr>             </table>                        </div>         </div>         </div>`)[0];
+                popup_7fb72e16f640edf4b1368b85ec27ad72.setContent(html_9d77a0e07c9ab4a3bafcc796d77ecfca);
+            
+        
+
+        geo_json_69806ea0756af2b124622c1b082a7cd5.bindPopup(popup_7fb72e16f640edf4b1368b85ec27ad72)
+        ;
+
+        
+    
+    
+            geo_json_69806ea0756af2b124622c1b082a7cd5.addTo(feature_group_692427f55b0ac46246bc5fbe4833f58d);
+        
+    
+            feature_group_692427f55b0ac46246bc5fbe4833f58d.addTo(map_6d752d3326972a318f6f49bfa38cac40);
+        
+    
+            var feature_group_c4b157e87a6629365d2d7e535e99f0c0 = L.featureGroup(
+                {
+}
+            );
+        
+    
+        function geo_json_5eb87adb4785e672d887f5abb0c852ec_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "#4a2f64", "fillColor": "#7b4fa6", "fillOpacity": 0.45, "weight": 0.8};
+            }
+        }
+        function geo_json_5eb87adb4785e672d887f5abb0c852ec_highlighter(feature) {
+            switch(feature.id) {
+                default:
+                    return {"fillOpacity": 0.7, "weight": 2.5};
+            }
+        }
+
+        function geo_json_5eb87adb4785e672d887f5abb0c852ec_onEachFeature(feature, layer) {
+
+            layer.on({
+                mouseout: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                            geo_json_5eb87adb4785e672d887f5abb0c852ec.resetStyle(e.target);
+                    }
+                },
+                mouseover: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        const highlightStyle = geo_json_5eb87adb4785e672d887f5abb0c852ec_highlighter(e.target.feature)
+                        e.target.setStyle(highlightStyle);
+                    }
+                },
+            });
+        };
+        var geo_json_5eb87adb4785e672d887f5abb0c852ec = L.geoJson(null, {
+                onEachFeature: geo_json_5eb87adb4785e672d887f5abb0c852ec_onEachFeature,
+            
+                style: geo_json_5eb87adb4785e672d887f5abb0c852ec_styler,
+            ...{
+}
+        });
+
+        function geo_json_5eb87adb4785e672d887f5abb0c852ec_add (data) {
+            geo_json_5eb87adb4785e672d887f5abb0c852ec
+                .addData(data);
+        }
+            geo_json_5eb87adb4785e672d887f5abb0c852ec_add({"features": [{"geometry": {"coordinates": [[[-115.89999999999999, 44.4], [-114.7, 44.4], [-114.7, 45.6], [-115.89999999999999, 45.6], [-115.89999999999999, 44.4]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_5eb87adb4785e672d887f5abb0c852ec.bindTooltip(
+                `<div>
+                     Frank Church–River of No Return Wilderness
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_4e56d61de117e24f74b12e3788804344 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_d2bc7fb3468e1634eb26271f8aeadd2e = $(`<div id="html_d2bc7fb3468e1634eb26271f8aeadd2e" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Arial,sans-serif;min-width:220px">           <div style="background:#7b4fa6;color:white;padding:8px 10px;border-radius:4px 4px 0 0">             <b>Frank Church–River of No Return Wilderness</b>           </div>           <div style="padding:8px 10px;border:1px solid #ddd;border-top:none;border-radius:0 0 4px 4px">             <table style="width:100%;font-size:12px">               <tr><td><b>Type</b></td><td>Wilderness Area</td></tr>               <tr><td><b>State</b></td><td>ID</td></tr>               <tr><td><b>Agency</b></td><td>USFS</td></tr>               <tr><td><b>Acres</b></td><td>2,366,000</td></tr>             </table>                        </div>         </div>         </div>`)[0];
+                popup_4e56d61de117e24f74b12e3788804344.setContent(html_d2bc7fb3468e1634eb26271f8aeadd2e);
+            
+        
+
+        geo_json_5eb87adb4785e672d887f5abb0c852ec.bindPopup(popup_4e56d61de117e24f74b12e3788804344)
+        ;
+
+        
+    
+    
+            geo_json_5eb87adb4785e672d887f5abb0c852ec.addTo(feature_group_c4b157e87a6629365d2d7e535e99f0c0);
+        
+    
+        function geo_json_dc9e03c254debdd358bb2f8d47b23675_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "#4a2f64", "fillColor": "#7b4fa6", "fillOpacity": 0.45, "weight": 0.8};
+            }
+        }
+        function geo_json_dc9e03c254debdd358bb2f8d47b23675_highlighter(feature) {
+            switch(feature.id) {
+                default:
+                    return {"fillOpacity": 0.7, "weight": 2.5};
+            }
+        }
+
+        function geo_json_dc9e03c254debdd358bb2f8d47b23675_onEachFeature(feature, layer) {
+
+            layer.on({
+                mouseout: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                            geo_json_dc9e03c254debdd358bb2f8d47b23675.resetStyle(e.target);
+                    }
+                },
+                mouseover: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        const highlightStyle = geo_json_dc9e03c254debdd358bb2f8d47b23675_highlighter(e.target.feature)
+                        e.target.setStyle(highlightStyle);
+                    }
+                },
+            });
+        };
+        var geo_json_dc9e03c254debdd358bb2f8d47b23675 = L.geoJson(null, {
+                onEachFeature: geo_json_dc9e03c254debdd358bb2f8d47b23675_onEachFeature,
+            
+                style: geo_json_dc9e03c254debdd358bb2f8d47b23675_styler,
+            ...{
+}
+        });
+
+        function geo_json_dc9e03c254debdd358bb2f8d47b23675_add (data) {
+            geo_json_dc9e03c254debdd358bb2f8d47b23675
+                .addData(data);
+        }
+            geo_json_dc9e03c254debdd358bb2f8d47b23675_add({"features": [{"geometry": {"coordinates": [[[-113.89999999999999, 46.9], [-112.7, 46.9], [-112.7, 48.1], [-113.89999999999999, 48.1], [-113.89999999999999, 46.9]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_dc9e03c254debdd358bb2f8d47b23675.bindTooltip(
+                `<div>
+                     Bob Marshall Wilderness
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_f656b4298c4de42a6569b685f79f2132 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_8c028c6acf6750122eca7956addfa9d3 = $(`<div id="html_8c028c6acf6750122eca7956addfa9d3" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Arial,sans-serif;min-width:220px">           <div style="background:#7b4fa6;color:white;padding:8px 10px;border-radius:4px 4px 0 0">             <b>Bob Marshall Wilderness</b>           </div>           <div style="padding:8px 10px;border:1px solid #ddd;border-top:none;border-radius:0 0 4px 4px">             <table style="width:100%;font-size:12px">               <tr><td><b>Type</b></td><td>Wilderness Area</td></tr>               <tr><td><b>State</b></td><td>MT</td></tr>               <tr><td><b>Agency</b></td><td>USFS</td></tr>               <tr><td><b>Acres</b></td><td>1,009,356</td></tr>             </table>                        </div>         </div>         </div>`)[0];
+                popup_f656b4298c4de42a6569b685f79f2132.setContent(html_8c028c6acf6750122eca7956addfa9d3);
+            
+        
+
+        geo_json_dc9e03c254debdd358bb2f8d47b23675.bindPopup(popup_f656b4298c4de42a6569b685f79f2132)
+        ;
+
+        
+    
+    
+            geo_json_dc9e03c254debdd358bb2f8d47b23675.addTo(feature_group_c4b157e87a6629365d2d7e535e99f0c0);
+        
+    
+        function geo_json_3a1cc0937e34ecc91ae7f08792441e39_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "#4a2f64", "fillColor": "#7b4fa6", "fillOpacity": 0.45, "weight": 0.8};
+            }
+        }
+        function geo_json_3a1cc0937e34ecc91ae7f08792441e39_highlighter(feature) {
+            switch(feature.id) {
+                default:
+                    return {"fillOpacity": 0.7, "weight": 2.5};
+            }
+        }
+
+        function geo_json_3a1cc0937e34ecc91ae7f08792441e39_onEachFeature(feature, layer) {
+
+            layer.on({
+                mouseout: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                            geo_json_3a1cc0937e34ecc91ae7f08792441e39.resetStyle(e.target);
+                    }
+                },
+                mouseover: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        const highlightStyle = geo_json_3a1cc0937e34ecc91ae7f08792441e39_highlighter(e.target.feature)
+                        e.target.setStyle(highlightStyle);
+                    }
+                },
+            });
+        };
+        var geo_json_3a1cc0937e34ecc91ae7f08792441e39 = L.geoJson(null, {
+                onEachFeature: geo_json_3a1cc0937e34ecc91ae7f08792441e39_onEachFeature,
+            
+                style: geo_json_3a1cc0937e34ecc91ae7f08792441e39_styler,
+            ...{
+}
+        });
+
+        function geo_json_3a1cc0937e34ecc91ae7f08792441e39_add (data) {
+            geo_json_3a1cc0937e34ecc91ae7f08792441e39
+                .addData(data);
+        }
+            geo_json_3a1cc0937e34ecc91ae7f08792441e39_add({"features": [{"geometry": {"coordinates": [[[-92.1, 47.4], [-90.9, 47.4], [-90.9, 48.6], [-92.1, 48.6], [-92.1, 47.4]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_3a1cc0937e34ecc91ae7f08792441e39.bindTooltip(
+                `<div>
+                     Boundary Waters Canoe Area Wilderness
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_5b305f78f85c5671694d337be73ac38c = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_4129931a9e961aa35472ce06add85f7a = $(`<div id="html_4129931a9e961aa35472ce06add85f7a" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Arial,sans-serif;min-width:220px">           <div style="background:#7b4fa6;color:white;padding:8px 10px;border-radius:4px 4px 0 0">             <b>Boundary Waters Canoe Area Wilderness</b>           </div>           <div style="padding:8px 10px;border:1px solid #ddd;border-top:none;border-radius:0 0 4px 4px">             <table style="width:100%;font-size:12px">               <tr><td><b>Type</b></td><td>Wilderness Area</td></tr>               <tr><td><b>State</b></td><td>MN</td></tr>               <tr><td><b>Agency</b></td><td>USFS</td></tr>               <tr><td><b>Acres</b></td><td>1,090,000</td></tr>             </table>                        </div>         </div>         </div>`)[0];
+                popup_5b305f78f85c5671694d337be73ac38c.setContent(html_4129931a9e961aa35472ce06add85f7a);
+            
+        
+
+        geo_json_3a1cc0937e34ecc91ae7f08792441e39.bindPopup(popup_5b305f78f85c5671694d337be73ac38c)
+        ;
+
+        
+    
+    
+            geo_json_3a1cc0937e34ecc91ae7f08792441e39.addTo(feature_group_c4b157e87a6629365d2d7e535e99f0c0);
+        
+    
+        function geo_json_20b9232333d68a577e298d3c1d0f6f12_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "#4a2f64", "fillColor": "#7b4fa6", "fillOpacity": 0.45, "weight": 0.8};
+            }
+        }
+        function geo_json_20b9232333d68a577e298d3c1d0f6f12_highlighter(feature) {
+            switch(feature.id) {
+                default:
+                    return {"fillOpacity": 0.7, "weight": 2.5};
+            }
+        }
+
+        function geo_json_20b9232333d68a577e298d3c1d0f6f12_onEachFeature(feature, layer) {
+
+            layer.on({
+                mouseout: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                            geo_json_20b9232333d68a577e298d3c1d0f6f12.resetStyle(e.target);
+                    }
+                },
+                mouseover: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        const highlightStyle = geo_json_20b9232333d68a577e298d3c1d0f6f12_highlighter(e.target.feature)
+                        e.target.setStyle(highlightStyle);
+                    }
+                },
+            });
+        };
+        var geo_json_20b9232333d68a577e298d3c1d0f6f12 = L.geoJson(null, {
+                onEachFeature: geo_json_20b9232333d68a577e298d3c1d0f6f12_onEachFeature,
+            
+                style: geo_json_20b9232333d68a577e298d3c1d0f6f12_styler,
+            ...{
+}
+        });
+
+        function geo_json_20b9232333d68a577e298d3c1d0f6f12_add (data) {
+            geo_json_20b9232333d68a577e298d3c1d0f6f12
+                .addData(data);
+        }
+            geo_json_20b9232333d68a577e298d3c1d0f6f12_add({"features": [{"geometry": {"coordinates": [[[-108.1, 37.1], [-106.9, 37.1], [-106.9, 38.300000000000004], [-108.1, 38.300000000000004], [-108.1, 37.1]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_20b9232333d68a577e298d3c1d0f6f12.bindTooltip(
+                `<div>
+                     Weminuche Wilderness
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_38e33c783f45d73b74e133bda92bf5dc = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_71db5c88a36da20915e8ce118e7b3fc0 = $(`<div id="html_71db5c88a36da20915e8ce118e7b3fc0" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Arial,sans-serif;min-width:220px">           <div style="background:#7b4fa6;color:white;padding:8px 10px;border-radius:4px 4px 0 0">             <b>Weminuche Wilderness</b>           </div>           <div style="padding:8px 10px;border:1px solid #ddd;border-top:none;border-radius:0 0 4px 4px">             <table style="width:100%;font-size:12px">               <tr><td><b>Type</b></td><td>Wilderness Area</td></tr>               <tr><td><b>State</b></td><td>CO</td></tr>               <tr><td><b>Agency</b></td><td>USFS</td></tr>               <tr><td><b>Acres</b></td><td>499,771</td></tr>             </table>                        </div>         </div>         </div>`)[0];
+                popup_38e33c783f45d73b74e133bda92bf5dc.setContent(html_71db5c88a36da20915e8ce118e7b3fc0);
+            
+        
+
+        geo_json_20b9232333d68a577e298d3c1d0f6f12.bindPopup(popup_38e33c783f45d73b74e133bda92bf5dc)
+        ;
+
+        
+    
+    
+            geo_json_20b9232333d68a577e298d3c1d0f6f12.addTo(feature_group_c4b157e87a6629365d2d7e535e99f0c0);
+        
+    
+        function geo_json_f5d38bfac7085d7bc713a8a0c6524345_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "#4a2f64", "fillColor": "#7b4fa6", "fillOpacity": 0.45, "weight": 0.8};
+            }
+        }
+        function geo_json_f5d38bfac7085d7bc713a8a0c6524345_highlighter(feature) {
+            switch(feature.id) {
+                default:
+                    return {"fillOpacity": 0.7, "weight": 2.5};
+            }
+        }
+
+        function geo_json_f5d38bfac7085d7bc713a8a0c6524345_onEachFeature(feature, layer) {
+
+            layer.on({
+                mouseout: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                            geo_json_f5d38bfac7085d7bc713a8a0c6524345.resetStyle(e.target);
+                    }
+                },
+                mouseover: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        const highlightStyle = geo_json_f5d38bfac7085d7bc713a8a0c6524345_highlighter(e.target.feature)
+                        e.target.setStyle(highlightStyle);
+                    }
+                },
+            });
+        };
+        var geo_json_f5d38bfac7085d7bc713a8a0c6524345 = L.geoJson(null, {
+                onEachFeature: geo_json_f5d38bfac7085d7bc713a8a0c6524345_onEachFeature,
+            
+                style: geo_json_f5d38bfac7085d7bc713a8a0c6524345_styler,
+            ...{
+}
+        });
+
+        function geo_json_f5d38bfac7085d7bc713a8a0c6524345_add (data) {
+            geo_json_f5d38bfac7085d7bc713a8a0c6524345
+                .addData(data);
+        }
+            geo_json_f5d38bfac7085d7bc713a8a0c6524345_add({"features": [{"geometry": {"coordinates": [[[-119.1, 36.6], [-117.9, 36.6], [-117.9, 37.800000000000004], [-119.1, 37.800000000000004], [-119.1, 36.6]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_f5d38bfac7085d7bc713a8a0c6524345.bindTooltip(
+                `<div>
+                     John Muir Wilderness
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_3db92812f98b05782c8a7a84822265dd = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_b684af77050f0380ffa45b2bc66d9dd8 = $(`<div id="html_b684af77050f0380ffa45b2bc66d9dd8" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Arial,sans-serif;min-width:220px">           <div style="background:#7b4fa6;color:white;padding:8px 10px;border-radius:4px 4px 0 0">             <b>John Muir Wilderness</b>           </div>           <div style="padding:8px 10px;border:1px solid #ddd;border-top:none;border-radius:0 0 4px 4px">             <table style="width:100%;font-size:12px">               <tr><td><b>Type</b></td><td>Wilderness Area</td></tr>               <tr><td><b>State</b></td><td>CA</td></tr>               <tr><td><b>Agency</b></td><td>USFS</td></tr>               <tr><td><b>Acres</b></td><td>652,737</td></tr>             </table>                        </div>         </div>         </div>`)[0];
+                popup_3db92812f98b05782c8a7a84822265dd.setContent(html_b684af77050f0380ffa45b2bc66d9dd8);
+            
+        
+
+        geo_json_f5d38bfac7085d7bc713a8a0c6524345.bindPopup(popup_3db92812f98b05782c8a7a84822265dd)
+        ;
+
+        
+    
+    
+            geo_json_f5d38bfac7085d7bc713a8a0c6524345.addTo(feature_group_c4b157e87a6629365d2d7e535e99f0c0);
+        
+    
+        function geo_json_3cf029e6e0e2aeb974e75994936228bb_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "#4a2f64", "fillColor": "#7b4fa6", "fillOpacity": 0.45, "weight": 0.8};
+            }
+        }
+        function geo_json_3cf029e6e0e2aeb974e75994936228bb_highlighter(feature) {
+            switch(feature.id) {
+                default:
+                    return {"fillOpacity": 0.7, "weight": 2.5};
+            }
+        }
+
+        function geo_json_3cf029e6e0e2aeb974e75994936228bb_onEachFeature(feature, layer) {
+
+            layer.on({
+                mouseout: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                            geo_json_3cf029e6e0e2aeb974e75994936228bb.resetStyle(e.target);
+                    }
+                },
+                mouseover: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        const highlightStyle = geo_json_3cf029e6e0e2aeb974e75994936228bb_highlighter(e.target.feature)
+                        e.target.setStyle(highlightStyle);
+                    }
+                },
+            });
+        };
+        var geo_json_3cf029e6e0e2aeb974e75994936228bb = L.geoJson(null, {
+                onEachFeature: geo_json_3cf029e6e0e2aeb974e75994936228bb_onEachFeature,
+            
+                style: geo_json_3cf029e6e0e2aeb974e75994936228bb_styler,
+            ...{
+}
+        });
+
+        function geo_json_3cf029e6e0e2aeb974e75994936228bb_add (data) {
+            geo_json_3cf029e6e0e2aeb974e75994936228bb
+                .addData(data);
+        }
+            geo_json_3cf029e6e0e2aeb974e75994936228bb_add({"features": [{"geometry": {"coordinates": [[[-107.6, 38.5], [-106.4, 38.5], [-106.4, 39.7], [-107.6, 39.7], [-107.6, 38.5]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_3cf029e6e0e2aeb974e75994936228bb.bindTooltip(
+                `<div>
+                     Maroon Bells-Snowmass Wilderness
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_931dd3a709f637e26fb4fd53603b9497 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_142c8b95ec58818c1a1088bd55cf54ac = $(`<div id="html_142c8b95ec58818c1a1088bd55cf54ac" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Arial,sans-serif;min-width:220px">           <div style="background:#7b4fa6;color:white;padding:8px 10px;border-radius:4px 4px 0 0">             <b>Maroon Bells-Snowmass Wilderness</b>           </div>           <div style="padding:8px 10px;border:1px solid #ddd;border-top:none;border-radius:0 0 4px 4px">             <table style="width:100%;font-size:12px">               <tr><td><b>Type</b></td><td>Wilderness Area</td></tr>               <tr><td><b>State</b></td><td>CO</td></tr>               <tr><td><b>Agency</b></td><td>USFS</td></tr>               <tr><td><b>Acres</b></td><td>181,117</td></tr>             </table>                        </div>         </div>         </div>`)[0];
+                popup_931dd3a709f637e26fb4fd53603b9497.setContent(html_142c8b95ec58818c1a1088bd55cf54ac);
+            
+        
+
+        geo_json_3cf029e6e0e2aeb974e75994936228bb.bindPopup(popup_931dd3a709f637e26fb4fd53603b9497)
+        ;
+
+        
+    
+    
+            geo_json_3cf029e6e0e2aeb974e75994936228bb.addTo(feature_group_c4b157e87a6629365d2d7e535e99f0c0);
+        
+    
+            feature_group_c4b157e87a6629365d2d7e535e99f0c0.addTo(map_6d752d3326972a318f6f49bfa38cac40);
+        
+    
+            var feature_group_36000cbf5088885598200fa521a53e06 = L.featureGroup(
+                {
+}
+            );
+        
+    
+        function geo_json_53dcf1413071dbe6cfcbbcf96a9752b4_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "#733a13", "fillColor": "#c06020", "fillOpacity": 0.45, "weight": 0.8};
+            }
+        }
+        function geo_json_53dcf1413071dbe6cfcbbcf96a9752b4_highlighter(feature) {
+            switch(feature.id) {
+                default:
+                    return {"fillOpacity": 0.7, "weight": 2.5};
+            }
+        }
+
+        function geo_json_53dcf1413071dbe6cfcbbcf96a9752b4_onEachFeature(feature, layer) {
+
+            layer.on({
+                mouseout: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                            geo_json_53dcf1413071dbe6cfcbbcf96a9752b4.resetStyle(e.target);
+                    }
+                },
+                mouseover: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        const highlightStyle = geo_json_53dcf1413071dbe6cfcbbcf96a9752b4_highlighter(e.target.feature)
+                        e.target.setStyle(highlightStyle);
+                    }
+                },
+            });
+        };
+        var geo_json_53dcf1413071dbe6cfcbbcf96a9752b4 = L.geoJson(null, {
+                onEachFeature: geo_json_53dcf1413071dbe6cfcbbcf96a9752b4_onEachFeature,
+            
+                style: geo_json_53dcf1413071dbe6cfcbbcf96a9752b4_styler,
+            ...{
+}
+        });
+
+        function geo_json_53dcf1413071dbe6cfcbbcf96a9752b4_add (data) {
+            geo_json_53dcf1413071dbe6cfcbbcf96a9752b4
+                .addData(data);
+        }
+            geo_json_53dcf1413071dbe6cfcbbcf96a9752b4_add({"features": [{"geometry": {"coordinates": [[[-145.35, 68.15], [-144.65, 68.15], [-144.65, 68.85], [-145.35, 68.85], [-145.35, 68.15]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_53dcf1413071dbe6cfcbbcf96a9752b4.bindTooltip(
+                `<div>
+                     Arctic National Wildlife Refuge
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_3e6a425fa7d4201d3e19bae8ce6a54c3 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_bec08ccb9f561de0eeeaa09d220b91cf = $(`<div id="html_bec08ccb9f561de0eeeaa09d220b91cf" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Arial,sans-serif;min-width:220px">           <div style="background:#c06020;color:white;padding:8px 10px;border-radius:4px 4px 0 0">             <b>Arctic National Wildlife Refuge</b>           </div>           <div style="padding:8px 10px;border:1px solid #ddd;border-top:none;border-radius:0 0 4px 4px">             <table style="width:100%;font-size:12px">               <tr><td><b>Type</b></td><td>National Wildlife Refuge</td></tr>               <tr><td><b>State</b></td><td>AK</td></tr>               <tr><td><b>Agency</b></td><td>USFWS</td></tr>               <tr><td><b>Acres</b></td><td>19,286,174</td></tr>             </table>             <a href='https://fws.gov' target='_blank' style='font-size:11px'>More info ↗</a>           </div>         </div>         </div>`)[0];
+                popup_3e6a425fa7d4201d3e19bae8ce6a54c3.setContent(html_bec08ccb9f561de0eeeaa09d220b91cf);
+            
+        
+
+        geo_json_53dcf1413071dbe6cfcbbcf96a9752b4.bindPopup(popup_3e6a425fa7d4201d3e19bae8ce6a54c3)
+        ;
+
+        
+    
+    
+            geo_json_53dcf1413071dbe6cfcbbcf96a9752b4.addTo(feature_group_36000cbf5088885598200fa521a53e06);
+        
+    
+        function geo_json_fd6ca03a5524b53d3ebbee47ba254336_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "#733a13", "fillColor": "#c06020", "fillOpacity": 0.45, "weight": 0.8};
+            }
+        }
+        function geo_json_fd6ca03a5524b53d3ebbee47ba254336_highlighter(feature) {
+            switch(feature.id) {
+                default:
+                    return {"fillOpacity": 0.7, "weight": 2.5};
+            }
+        }
+
+        function geo_json_fd6ca03a5524b53d3ebbee47ba254336_onEachFeature(feature, layer) {
+
+            layer.on({
+                mouseout: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                            geo_json_fd6ca03a5524b53d3ebbee47ba254336.resetStyle(e.target);
+                    }
+                },
+                mouseover: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        const highlightStyle = geo_json_fd6ca03a5524b53d3ebbee47ba254336_highlighter(e.target.feature)
+                        e.target.setStyle(highlightStyle);
+                    }
+                },
+            });
+        };
+        var geo_json_fd6ca03a5524b53d3ebbee47ba254336 = L.geoJson(null, {
+                onEachFeature: geo_json_fd6ca03a5524b53d3ebbee47ba254336_onEachFeature,
+            
+                style: geo_json_fd6ca03a5524b53d3ebbee47ba254336_styler,
+            ...{
+}
+        });
+
+        function geo_json_fd6ca03a5524b53d3ebbee47ba254336_add (data) {
+            geo_json_fd6ca03a5524b53d3ebbee47ba254336
+                .addData(data);
+        }
+            geo_json_fd6ca03a5524b53d3ebbee47ba254336_add({"features": [{"geometry": {"coordinates": [[[-150.85, 60.15], [-150.15, 60.15], [-150.15, 60.85], [-150.85, 60.85], [-150.85, 60.15]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_fd6ca03a5524b53d3ebbee47ba254336.bindTooltip(
+                `<div>
+                     Kenai National Wildlife Refuge
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_799605ac383984a5ab77dffaf66d644e = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_9fdfc2959998917a8c884875d5b2e261 = $(`<div id="html_9fdfc2959998917a8c884875d5b2e261" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Arial,sans-serif;min-width:220px">           <div style="background:#c06020;color:white;padding:8px 10px;border-radius:4px 4px 0 0">             <b>Kenai National Wildlife Refuge</b>           </div>           <div style="padding:8px 10px;border:1px solid #ddd;border-top:none;border-radius:0 0 4px 4px">             <table style="width:100%;font-size:12px">               <tr><td><b>Type</b></td><td>National Wildlife Refuge</td></tr>               <tr><td><b>State</b></td><td>AK</td></tr>               <tr><td><b>Agency</b></td><td>USFWS</td></tr>               <tr><td><b>Acres</b></td><td>1,970,000</td></tr>             </table>             <a href='https://fws.gov' target='_blank' style='font-size:11px'>More info ↗</a>           </div>         </div>         </div>`)[0];
+                popup_799605ac383984a5ab77dffaf66d644e.setContent(html_9fdfc2959998917a8c884875d5b2e261);
+            
+        
+
+        geo_json_fd6ca03a5524b53d3ebbee47ba254336.bindPopup(popup_799605ac383984a5ab77dffaf66d644e)
+        ;
+
+        
+    
+    
+            geo_json_fd6ca03a5524b53d3ebbee47ba254336.addTo(feature_group_36000cbf5088885598200fa521a53e06);
+        
+    
+        function geo_json_d8cb5dfc7e47c9c2115a9e025914f299_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "#733a13", "fillColor": "#c06020", "fillOpacity": 0.45, "weight": 0.8};
+            }
+        }
+        function geo_json_d8cb5dfc7e47c9c2115a9e025914f299_highlighter(feature) {
+            switch(feature.id) {
+                default:
+                    return {"fillOpacity": 0.7, "weight": 2.5};
+            }
+        }
+
+        function geo_json_d8cb5dfc7e47c9c2115a9e025914f299_onEachFeature(feature, layer) {
+
+            layer.on({
+                mouseout: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                            geo_json_d8cb5dfc7e47c9c2115a9e025914f299.resetStyle(e.target);
+                    }
+                },
+                mouseover: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        const highlightStyle = geo_json_d8cb5dfc7e47c9c2115a9e025914f299_highlighter(e.target.feature)
+                        e.target.setStyle(highlightStyle);
+                    }
+                },
+            });
+        };
+        var geo_json_d8cb5dfc7e47c9c2115a9e025914f299 = L.geoJson(null, {
+                onEachFeature: geo_json_d8cb5dfc7e47c9c2115a9e025914f299_onEachFeature,
+            
+                style: geo_json_d8cb5dfc7e47c9c2115a9e025914f299_styler,
+            ...{
+}
+        });
+
+        function geo_json_d8cb5dfc7e47c9c2115a9e025914f299_add (data) {
+            geo_json_d8cb5dfc7e47c9c2115a9e025914f299
+                .addData(data);
+        }
+            geo_json_d8cb5dfc7e47c9c2115a9e025914f299_add({"features": [{"geometry": {"coordinates": [[[-112.14999999999999, 44.25], [-111.45, 44.25], [-111.45, 44.95], [-112.14999999999999, 44.95], [-112.14999999999999, 44.25]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_d8cb5dfc7e47c9c2115a9e025914f299.bindTooltip(
+                `<div>
+                     Red Rock Lakes National Wildlife Refuge
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_7bd19a1e528dd3dd938722353bb53435 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_705a2a3b6c0c98156fd39ebf77172c81 = $(`<div id="html_705a2a3b6c0c98156fd39ebf77172c81" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Arial,sans-serif;min-width:220px">           <div style="background:#c06020;color:white;padding:8px 10px;border-radius:4px 4px 0 0">             <b>Red Rock Lakes National Wildlife Refuge</b>           </div>           <div style="padding:8px 10px;border:1px solid #ddd;border-top:none;border-radius:0 0 4px 4px">             <table style="width:100%;font-size:12px">               <tr><td><b>Type</b></td><td>National Wildlife Refuge</td></tr>               <tr><td><b>State</b></td><td>MT</td></tr>               <tr><td><b>Agency</b></td><td>USFWS</td></tr>               <tr><td><b>Acres</b></td><td>43,533</td></tr>             </table>             <a href='https://fws.gov' target='_blank' style='font-size:11px'>More info ↗</a>           </div>         </div>         </div>`)[0];
+                popup_7bd19a1e528dd3dd938722353bb53435.setContent(html_705a2a3b6c0c98156fd39ebf77172c81);
+            
+        
+
+        geo_json_d8cb5dfc7e47c9c2115a9e025914f299.bindPopup(popup_7bd19a1e528dd3dd938722353bb53435)
+        ;
+
+        
+    
+    
+            geo_json_d8cb5dfc7e47c9c2115a9e025914f299.addTo(feature_group_36000cbf5088885598200fa521a53e06);
+        
+    
+        function geo_json_148b51bdbe5eb42e411a3a8808f456c3_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "#733a13", "fillColor": "#c06020", "fillOpacity": 0.45, "weight": 0.8};
+            }
+        }
+        function geo_json_148b51bdbe5eb42e411a3a8808f456c3_highlighter(feature) {
+            switch(feature.id) {
+                default:
+                    return {"fillOpacity": 0.7, "weight": 2.5};
+            }
+        }
+
+        function geo_json_148b51bdbe5eb42e411a3a8808f456c3_onEachFeature(feature, layer) {
+
+            layer.on({
+                mouseout: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                            geo_json_148b51bdbe5eb42e411a3a8808f456c3.resetStyle(e.target);
+                    }
+                },
+                mouseover: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        const highlightStyle = geo_json_148b51bdbe5eb42e411a3a8808f456c3_highlighter(e.target.feature)
+                        e.target.setStyle(highlightStyle);
+                    }
+                },
+            });
+        };
+        var geo_json_148b51bdbe5eb42e411a3a8808f456c3 = L.geoJson(null, {
+                onEachFeature: geo_json_148b51bdbe5eb42e411a3a8808f456c3_onEachFeature,
+            
+                style: geo_json_148b51bdbe5eb42e411a3a8808f456c3_styler,
+            ...{
+}
+        });
+
+        function geo_json_148b51bdbe5eb42e411a3a8808f456c3_add (data) {
+            geo_json_148b51bdbe5eb42e411a3a8808f456c3
+                .addData(data);
+        }
+            geo_json_148b51bdbe5eb42e411a3a8808f456c3_add({"features": [{"geometry": {"coordinates": [[[-76.44999999999999, 38.05], [-75.75, 38.05], [-75.75, 38.75], [-76.44999999999999, 38.75], [-76.44999999999999, 38.05]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_148b51bdbe5eb42e411a3a8808f456c3.bindTooltip(
+                `<div>
+                     Blackwater National Wildlife Refuge
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_d0b30d55ea008896dfd1d918b856afe4 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_097fcdced7e3a3840deb98356ecc41ea = $(`<div id="html_097fcdced7e3a3840deb98356ecc41ea" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Arial,sans-serif;min-width:220px">           <div style="background:#c06020;color:white;padding:8px 10px;border-radius:4px 4px 0 0">             <b>Blackwater National Wildlife Refuge</b>           </div>           <div style="padding:8px 10px;border:1px solid #ddd;border-top:none;border-radius:0 0 4px 4px">             <table style="width:100%;font-size:12px">               <tr><td><b>Type</b></td><td>National Wildlife Refuge</td></tr>               <tr><td><b>State</b></td><td>MD</td></tr>               <tr><td><b>Agency</b></td><td>USFWS</td></tr>               <tr><td><b>Acres</b></td><td>28,666</td></tr>             </table>             <a href='https://fws.gov' target='_blank' style='font-size:11px'>More info ↗</a>           </div>         </div>         </div>`)[0];
+                popup_d0b30d55ea008896dfd1d918b856afe4.setContent(html_097fcdced7e3a3840deb98356ecc41ea);
+            
+        
+
+        geo_json_148b51bdbe5eb42e411a3a8808f456c3.bindPopup(popup_d0b30d55ea008896dfd1d918b856afe4)
+        ;
+
+        
+    
+    
+            geo_json_148b51bdbe5eb42e411a3a8808f456c3.addTo(feature_group_36000cbf5088885598200fa521a53e06);
+        
+    
+        function geo_json_234139777830ef163d67197e77995d06_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "#733a13", "fillColor": "#c06020", "fillOpacity": 0.45, "weight": 0.8};
+            }
+        }
+        function geo_json_234139777830ef163d67197e77995d06_highlighter(feature) {
+            switch(feature.id) {
+                default:
+                    return {"fillOpacity": 0.7, "weight": 2.5};
+            }
+        }
+
+        function geo_json_234139777830ef163d67197e77995d06_onEachFeature(feature, layer) {
+
+            layer.on({
+                mouseout: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                            geo_json_234139777830ef163d67197e77995d06.resetStyle(e.target);
+                    }
+                },
+                mouseover: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        const highlightStyle = geo_json_234139777830ef163d67197e77995d06_highlighter(e.target.feature)
+                        e.target.setStyle(highlightStyle);
+                    }
+                },
+            });
+        };
+        var geo_json_234139777830ef163d67197e77995d06 = L.geoJson(null, {
+                onEachFeature: geo_json_234139777830ef163d67197e77995d06_onEachFeature,
+            
+                style: geo_json_234139777830ef163d67197e77995d06_styler,
+            ...{
+}
+        });
+
+        function geo_json_234139777830ef163d67197e77995d06_add (data) {
+            geo_json_234139777830ef163d67197e77995d06
+                .addData(data);
+        }
+            geo_json_234139777830ef163d67197e77995d06_add({"features": [{"geometry": {"coordinates": [[[-75.75, 37.55], [-75.05000000000001, 37.55], [-75.05000000000001, 38.25], [-75.75, 38.25], [-75.75, 37.55]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_234139777830ef163d67197e77995d06.bindTooltip(
+                `<div>
+                     Chincoteague National Wildlife Refuge
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_909b6fa0ae4412fc4bece770603f27e0 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_b244c0498041d5f0321949aad0b9bf83 = $(`<div id="html_b244c0498041d5f0321949aad0b9bf83" style="width: 100.0%; height: 100.0%;">         <div style="font-family:Arial,sans-serif;min-width:220px">           <div style="background:#c06020;color:white;padding:8px 10px;border-radius:4px 4px 0 0">             <b>Chincoteague National Wildlife Refuge</b>           </div>           <div style="padding:8px 10px;border:1px solid #ddd;border-top:none;border-radius:0 0 4px 4px">             <table style="width:100%;font-size:12px">               <tr><td><b>Type</b></td><td>National Wildlife Refuge</td></tr>               <tr><td><b>State</b></td><td>VA</td></tr>               <tr><td><b>Agency</b></td><td>USFWS</td></tr>               <tr><td><b>Acres</b></td><td>14,034</td></tr>             </table>             <a href='https://fws.gov' target='_blank' style='font-size:11px'>More info ↗</a>           </div>         </div>         </div>`)[0];
+                popup_909b6fa0ae4412fc4bece770603f27e0.setContent(html_b244c0498041d5f0321949aad0b9bf83);
+            
+        
+
+        geo_json_234139777830ef163d67197e77995d06.bindPopup(popup_909b6fa0ae4412fc4bece770603f27e0)
+        ;
+
+        
+    
+    
+            geo_json_234139777830ef163d67197e77995d06.addTo(feature_group_36000cbf5088885598200fa521a53e06);
+        
+    
+            feature_group_36000cbf5088885598200fa521a53e06.addTo(map_6d752d3326972a318f6f49bfa38cac40);
+        
+    
+            var layer_control_205df5e621c82fe41d657fb600f92704_layers = {
+                base_layers : {
+                    "Light" : tile_layer_0704bd41e2fd2fbdb17314d0832324c4,
+                    "Esri Topo" : tile_layer_c7454676e6823127272bf1a1eca60387,
+                    "OpenStreetMap" : tile_layer_1aff87e44cc4aa7ae285273d91970871,
+                },
+                overlays :  {
+                    "BLM Land" : feature_group_cf0573dea3df90cffd949bef0a27ee73,
+                    "National Forest" : feature_group_3147b46d28e07bfb2956e8948361f983,
+                    "National Park / Seashore / Lakeshore" : feature_group_ab473225b5ed5dd91bc1a17a425d0ed2,
+                    "State Park" : feature_group_692427f55b0ac46246bc5fbe4833f58d,
+                    "Wilderness Area" : feature_group_c4b157e87a6629365d2d7e535e99f0c0,
+                    "National Wildlife Refuge" : feature_group_36000cbf5088885598200fa521a53e06,
+                },
+            };
+            let layer_control_205df5e621c82fe41d657fb600f92704 = L.control.layers(
+                layer_control_205df5e621c82fe41d657fb600f92704_layers.base_layers,
+                layer_control_205df5e621c82fe41d657fb600f92704_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": false,
+  "autoZIndex": true,
+}
+            ).addTo(map_6d752d3326972a318f6f49bfa38cac40);
+
+        
+</script>
+</html>
